@@ -13,4 +13,5 @@ func _on_body_entered(body):
 	if(active):
 		body.curCP = self
 		active = false
+		$AnimatedSprite2D.animation = "Up"
 	# Replace with function body.
