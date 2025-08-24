@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl1ha2ljh62ex"]
+[gd_scene load_steps=7 format=3 uid="uid://bl1ha2ljh62ex"]
 
 [ext_resource type="Script" uid="uid://cpu0itkbgh580" path="res://Scripts/checkpoint.gd" id="1_lbcco"]
 [ext_resource type="Texture2D" uid="uid://3flcba1kfnuu" path="res://Assets/art/flag_off.png" id="2_i1pff"]
@@ -27,6 +27,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1pff"]
+size = Vector2(25, 64)
+
 [node name="Checkpoint" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
@@ -35,8 +38,10 @@ script = ExtResource("1_lbcco")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(33, -32)
 sprite_frames = SubResource("SpriteFrames_w8ggu")
-animation = &"Up"
+animation = &"Down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10.5, -32)
+shape = SubResource("RectangleShape2D_i1pff")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
