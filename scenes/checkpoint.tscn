@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl1ha2ljh62ex"]
+[gd_scene load_steps=8 format=3 uid="uid://bl1ha2ljh62ex"]
 
-[ext_resource type="Script" uid="uid://cpu0itkbgh580" path="res://Scripts/checkpoint.gd" id="1_lbcco"]
-[ext_resource type="Texture2D" uid="uid://3flcba1kfnuu" path="res://Assets/art/flag_off.png" id="2_i1pff"]
-[ext_resource type="Texture2D" uid="uid://cs4wbv1y5rcjf" path="res://Assets/art/flag_red_a.png" id="3_opoc8"]
-[ext_resource type="Texture2D" uid="uid://hl0m5yc8vwsq" path="res://Assets/art/flag_red_b.png" id="4_l0c30"]
+[ext_resource type="Script" uid="uid://cpu0itkbgh580" path="res://scripts/checkpoint.gd" id="1_lbcco"]
+[ext_resource type="Texture2D" uid="uid://3flcba1kfnuu" path="res://assets/art/flag_off.png" id="2_i1pff"]
+[ext_resource type="Texture2D" uid="uid://cs4wbv1y5rcjf" path="res://assets/art/flag_red_a.png" id="3_opoc8"]
+[ext_resource type="Texture2D" uid="uid://hl0m5yc8vwsq" path="res://assets/art/flag_red_b.png" id="4_l0c30"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w8ggu"]
 animations = [{
@@ -30,18 +30,39 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1pff"]
 size = Vector2(25, 64)
 
+[sub_resource type="Gradient" id="Gradient_yqsag"]
+offsets = PackedFloat32Array(0, 0.25, 0.5, 0.75, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1)
+
 [node name="Checkpoint" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_lbcco")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(33, -32)
 sprite_frames = SubResource("SpriteFrames_w8ggu")
 animation = &"Down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(10.5, -32)
+position = Vector2(-22, 0)
 shape = SubResource("RectangleShape2D_i1pff")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-22, 0)
+emitting = false
+amount = 20
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.2
+direction = Vector2(0, -1)
+initial_velocity_min = 282.61
+initial_velocity_max = 485.51
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+scale_amount_min = 8.0
+scale_amount_max = 16.0
+color_initial_ramp = SubResource("Gradient_yqsag")
+hue_variation_max = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
