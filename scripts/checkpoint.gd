@@ -14,5 +14,5 @@ func _on_body_entered(body):
 		body.curCP = self
 		active = false
 		$AnimatedSprite2D.animation = "Up"
-		$CPUParticles2D.emitting=true
+		$GPUParticles2D.emitting=true
 	# Replace with function body.

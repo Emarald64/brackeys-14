@@ -1,19 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwi5w06g0u40e"]
+[gd_scene load_steps=5 format=3 uid="uid://cwi5w06g0u40e"]
 
 [ext_resource type="Script" uid="uid://dlhh7vi3735i6" path="res://scripts/player.gd" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://bb20vnyrpfmlo" path="res://Scripts/grapple.gd" id="2_6t5aa"]
-[ext_resource type="Texture2D" uid="uid://b224a8y34kpbj" path="res://Assets/art/grapple hook.png" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://orpogay5f5o5" path="res://assets/art/icon.svg" id="4_dqkch"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
+size = Vector2(50, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
+radius = 300.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_3vyb7")
 
-[node name="grapple" type="Area2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_dqkch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qlg0r")
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="coyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Grapple point finder" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 5
-script = ExtResource("2_6t5aa")
+collision_mask = 4
 
-[node name="GrappleHook" type="Sprite2D" parent="grapple"]
-texture_filter = 1
-texture = ExtResource("2_cvnsp")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grapple point finder"]
+shape = SubResource("CircleShape2D_dqkch")
 
-[connection signal="body_entered" from="grapple" to="." method="_on_grapple_body_entered"]
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)

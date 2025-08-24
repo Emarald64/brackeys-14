@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://diw8lrh8lgf52"]
 
-[ext_resource type="Texture2D" uid="uid://ctk0jgiuyfn6v" path="res://Assets/art/spritesheet-tiles-default.png" id="1_4qcni"]
-[ext_resource type="PackedScene" uid="uid://bl1ha2ljh62ex" path="res://Scenes/checkpoint.tscn" id="2_3oaxy"]
+[ext_resource type="Texture2D" uid="uid://ctk0jgiuyfn6v" path="res://assets/art/spritesheet-tiles-default.png" id="1_4qcni"]
+[ext_resource type="PackedScene" uid="uid://bl1ha2ljh62ex" path="res://scenes/checkpoint.tscn" id="2_3oaxy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3oaxy"]
 texture = ExtResource("1_4qcni")
@@ -35,10 +35,16 @@ texture_region_size = Vector2i(64, 64)
 1:4/0 = 0
 1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:4/0/physics_layer_0/polygon_0/one_way = true
+2:4/next_alternative_id = 2
 2:4/0 = 0
 2:4/0/terrain_set = 0
 2:4/0/terrain = 1
 2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, 32, -32, 32)
+2:4/1 = 1
+2:4/1/flip_h = true
+2:4/1/terrain_set = 0
+2:4/1/terrain = 1
+2:4/1/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, 32, 32, -32, 32)
 1:5/0 = 0
 1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:5/0/physics_layer_0/polygon_0/one_way = true
@@ -469,6 +475,9 @@ texture_region_size = Vector2i(64, 64)
 9:0/0 = 0
 9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 9:0/0/physics_layer_0/polygon_0/one_way = true
+8:12/0 = 0
+8:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+8:12/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4i8q6"]
 scenes/1/scene = ExtResource("2_3oaxy")
@@ -476,6 +485,8 @@ scenes/1/scene = ExtResource("2_3oaxy")
 [resource]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 4
+physics_layer_1/collision_mask = 0
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Snow"
 terrain_set_0/terrain_0/color = Color(0.235294, 0.741176, 0.796078, 1)
