@@ -28,13 +28,12 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
-[node name="Grapple point finder" type="Area2D" parent="."]
+[node name="Super Graple Point Locater 300" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Grapple point finder"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Super Graple Point Locater 300"]
 shape = SubResource("CircleShape2D_dqkch")
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 0, 0)
-default_color = Color(0.36, 0.2574, 0.036, 1)
