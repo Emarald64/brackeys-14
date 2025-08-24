@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://orpogay5f5o5"
-path="res://.godot/imported/icon.svg-65d912a8ad2038b0c9252e538856d0ce.ctex"
+uid="uid://ctk0jgiuyfn6v"
+path="res://.godot/imported/spritesheet-tiles-default.png-601b9230bff3d162e4c00264b4147384.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/art/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-65d912a8ad2038b0c9252e538856d0ce.ctex"]
+source_file="res://Assets/art/spritesheet-tiles-default.png"
+dest_files=["res://.godot/imported/spritesheet-tiles-default.png-601b9230bff3d162e4c00264b4147384.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
