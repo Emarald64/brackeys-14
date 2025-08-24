@@ -1,7 +1,10 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://diw8lrh8lgf52"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://diw8lrh8lgf52"]
 
 [ext_resource type="Texture2D" uid="uid://ctk0jgiuyfn6v" path="res://assets/art/spritesheet-tiles-default.png" id="1_4qcni"]
 [ext_resource type="PackedScene" uid="uid://bl1ha2ljh62ex" path="res://scenes/checkpoint.tscn" id="2_3oaxy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3oaxy"]
+friction = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3oaxy"]
 texture = ExtResource("1_4qcni")
@@ -48,6 +51,7 @@ texture_region_size = Vector2i(64, 64)
 1:5/0 = 0
 1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:5/0/physics_layer_0/polygon_0/one_way = true
+2:5/next_alternative_id = 2
 2:5/0 = 0
 2:5/0/terrain_set = 0
 2:5/0/terrain = 0
@@ -59,6 +63,9 @@ texture_region_size = Vector2i(64, 64)
 2:5/0/terrains_peering_bit/left_side = 0
 2:5/0/terrains_peering_bit/top_left_corner = 0
 2:5/0/terrains_peering_bit/top_side = 0
+2:5/1 = 1
+2:5/1/flip_h = true
+2:5/1/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:6/0 = 0
 1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:6/0/physics_layer_0/polygon_0/one_way = true
@@ -69,19 +76,27 @@ texture_region_size = Vector2i(64, 64)
 2:6/0/terrains_peering_bit/right_side = 1
 2:6/0/terrains_peering_bit/top_left_corner = 1
 2:6/0/terrains_peering_bit/top_side = 1
+2:7/next_alternative_id = 2
 2:7/0 = 0
 2:7/0/terrain_set = 0
 2:7/0/terrain = 1
 2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 0, 32, 32, -32, 32)
 2:7/0/terrains_peering_bit/left_side = 1
+2:7/1 = 1
+2:7/1/flip_h = true
+2:7/1/physics_layer_0/polygon_0/points = PackedVector2Array(32, 0, 32, 32, -32, 32)
 1:8/0 = 0
 1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:8/0/physics_layer_0/polygon_0/one_way = true
+2:8/next_alternative_id = 2
 2:8/0 = 0
 2:8/0/terrain_set = 0
 2:8/0/terrain = 1
 2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, 0, 32, 32, -32, 32)
 2:8/0/terrains_peering_bit/right_side = 1
+2:8/1 = 1
+2:8/1/flip_h = true
+2:8/1/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 0, 32, -32, 32, 32, -32, 32)
 1:9/0 = 0
 1:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 2:9/0 = 0
@@ -485,6 +500,7 @@ scenes/1/scene = ExtResource("2_3oaxy")
 [resource]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_3oaxy")
 physics_layer_1/collision_layer = 4
 physics_layer_1/collision_mask = 0
 terrain_set_0/mode = 0

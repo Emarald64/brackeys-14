@@ -12,7 +12,6 @@ func _physics_process(delta: float) -> void:
 	var offset=player.position-position
 	if latched:
 		var pull=(min(max((offset+player.velocity+(player.get_gravity()*delta)).length()-offset.length(),0)+4000,5000))
-		print(pull)
 		player.velocity-=delta*offset/offset.length()*pull
 		if offset.length_squared()>160000:
 			retracting=true

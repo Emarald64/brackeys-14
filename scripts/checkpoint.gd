@@ -16,3 +16,5 @@ func _on_body_entered(body):
 		$AnimatedSprite2D.animation = "Up"
 		$GPUParticles2D.emitting=true
 	# Replace with function body.
+ 
+ 

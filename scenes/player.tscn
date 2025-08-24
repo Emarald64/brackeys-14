@@ -37,3 +37,4 @@ shape = SubResource("CircleShape2D_dqkch")
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(0.36, 0.2574, 0.036, 1)
