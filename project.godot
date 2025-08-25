@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="brackeys 14"
-run/main_scene="uid://bx24wx7wxielf"
+run/main_scene="uid://c8325sb5uxmcb"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 run/max_fps=60
 config/icon="res://assets/art/icon.svg"
@@ -73,6 +73,7 @@ debug-teleport={
 2d_physics/layer_2="player"
 2d_physics/layer_3="grappleable"
 2d_physics/layer_4="pickup"
+2d_physics/layer_5="death"
 
 [physics]
 

@@ -21,9 +21,7 @@ func _process(_delta: float) -> void:
  
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
-		velocity=Vector2.ZERO
-		if hook !=null:hook.queue_free()
-		position=curCP.position
+		respawn()
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -80,6 +78,10 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func respawn():
+	velocity=Vector2.ZERO
+	if hook !=null:hook.queue_free()
+	position=curCP.position
 
 func pickup(area: Area2D) -> void:
 	if area.get_meta("pickUp")=="grapple":

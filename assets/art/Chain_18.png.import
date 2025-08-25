@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cudsrftxqhp3h"
-path="res://.godot/imported/Chain_18.png-e78d967a1332aeeaaf8fb5efd957384e.ctex"
+path="res://.godot/imported/Chain_18.png-b20064abae4956fd645b7e062485521c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/art/Chain_18.png"
-dest_files=["res://.godot/imported/Chain_18.png-e78d967a1332aeeaaf8fb5efd957384e.ctex"]
+source_file="res://assets/art/Chain_18.png"
+dest_files=["res://.godot/imported/Chain_18.png-b20064abae4956fd645b7e062485521c.ctex"]
 
 [params]
 

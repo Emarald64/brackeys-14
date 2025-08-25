@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" load_steps=6 format=3 uid="uid://diw8lrh8lgf52"]
 
-[ext_resource type="Texture2D" uid="uid://ctk0jgiuyfn6v" path="res://Assets/art/spritesheet-tiles-default.png" id="1_4qcni"]
-[ext_resource type="PackedScene" uid="uid://bl1ha2ljh62ex" path="res://Scenes/checkpoint.tscn" id="2_3oaxy"]
-[ext_resource type="PackedScene" uid="uid://cm3m8ts63u2c2" path="res://Scenes/grapple_block.tscn" id="3_4i8q6"]
+[ext_resource type="Texture2D" uid="uid://ctk0jgiuyfn6v" path="res://assets/art/spritesheet-tiles-default.png" id="1_4qcni"]
+[ext_resource type="PackedScene" uid="uid://bl1ha2ljh62ex" path="res://scenes/checkpoint.tscn" id="2_3oaxy"]
+[ext_resource type="PackedScene" uid="uid://cm3m8ts63u2c2" path="res://scenes/grapple_block.tscn" id="3_4i8q6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3oaxy"]
 texture = ExtResource("1_4qcni")
@@ -524,6 +524,7 @@ texture_region_size = Vector2i(64, 64)
 17:7/1/flip_h = true
 17:7/1/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 1.86276, 32, -32, 32, 32, -32, 32)
 10:8/0 = 0
+10:8/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, 0, 32, 0, 32, 32, -32, 32)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4i8q6"]
 scenes/1/scene = ExtResource("2_3oaxy")
@@ -532,7 +533,7 @@ scenes/2/scene = ExtResource("3_4i8q6")
 [resource]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-physics_layer_1/collision_layer = 4
+physics_layer_1/collision_layer = 16
 physics_layer_1/collision_mask = 0
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Snow"
