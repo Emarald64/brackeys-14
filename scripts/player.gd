@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 						closestHook=area
 						closestHookDistance=distance
 				hook.position=position
-				var target=Autoload.closestPointOnRec(Rect2(closestHook.position- (closestHook.get_node("CollisionShape2D").shape.size/2),closestHook.get_node("CollisionShape2D").shape.size),position)
+				var target=Autoload.closestPointOnRec(Rect2(closestHook.global_position- (closestHook.get_node("CollisionShape2D").shape.size/2),closestHook.get_node("CollisionShape2D").shape.size),position)
 				hook.rotation=(target-position).angle()+(PI/2) 
 				hook.velocity=Vector2.from_angle(hook.rotation-(PI/2))*2000
 				hook.player=self
@@ -84,6 +84,6 @@ func respawn():
 	position=curCP.position
 
 func pickup(area: Area2D) -> void:
-	if area.get_meta("pickUp")=="grapple":
+	if area.get_meta("pickupType")=="grapple":
 		canGrapple=true
  

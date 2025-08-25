@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cq5s17xj5ymmo"]
 
-[ext_resource type="Script" uid="uid://bb20vnyrpfmlo" path="res://Scripts/grapple.gd" id="1_ef51w"]
-[ext_resource type="Texture2D" uid="uid://b224a8y34kpbj" path="res://Assets/art/grapple hook.png" id="2_g8ry6"]
+[ext_resource type="Script" uid="uid://bb20vnyrpfmlo" path="res://scripts/grapple.gd" id="1_ef51w"]
+[ext_resource type="Texture2D" uid="uid://b224a8y34kpbj" path="res://assets/art/grapple hook.png" id="2_g8ry6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8ry6"]
 size = Vector2(14, 16)

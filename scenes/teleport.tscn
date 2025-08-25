@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://haxcy5mosbqj"]
+
+[ext_resource type="Script" uid="uid://bj2e2k2e1wu82" path="res://scripts/teleport.gd" id="1_w4hbs"]
+[ext_resource type="Texture2D" uid="uid://biidv0qmsryj5" path="res://assets/art/white.png" id="2_2ayim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ayim"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kyeu7"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 8.0
+color = Color(0.06, 0.702333, 1, 1)
+
+[node name="Teleport" type="Area2D"]
+scale = Vector2(11.4777, 11.4777)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_w4hbs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2ayim")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture = ExtResource("2_2ayim")
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_kyeu7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

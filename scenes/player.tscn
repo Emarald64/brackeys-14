@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwi5w06g0u40e"]
+[gd_scene load_steps=9 format=3 uid="uid://cwi5w06g0u40e"]
 
-[ext_resource type="Script" uid="uid://dlhh7vi3735i6" path="res://Scripts/player.gd" id="1_3vyb7"]
-[ext_resource type="Texture2D" uid="uid://orpogay5f5o5" path="res://Assets/art/icon.svg" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://dlhh7vi3735i6" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://8td8m6signtr" path="res://assets/art/2d_lights_and_shadows_neutral_point_light.webp" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://orpogay5f5o5" path="res://assets/art/icon.svg" id="4_dqkch"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qhqgy"]
+light_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
 size = Vector2(50, 50)
@@ -20,6 +24,7 @@ collision_layer = 2
 script = ExtResource("1_3vyb7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_qhqgy")
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_dqkch")
 
@@ -57,6 +62,11 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = ExtResource("3_qhqgy")
+texture_scale = 5.38
 
 [connection signal="area_entered" from="Collect" to="." method="pickup"]
 [connection signal="body_entered" from="Hurtbox" to="." method="respawn" unbinds=1]
