@@ -18,7 +18,7 @@ config/icon="res://assets/art/icon.svg"
 
 [autoload]
 
-Autoload="*res://autoload.gd"
+Autoload="*res://scripts/autoload.gd"
 
 [editor_plugins]
 

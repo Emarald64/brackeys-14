@@ -12,7 +12,7 @@ var hook:Area2D=null
 func _ready():
 	Autoload.player=self
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if hook!=null:
 		$"Line2D".set_point_position(0,(hook.position-position))
 		$"Line2D".show()
@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 			#$AudioStreamPlayer.play()
 		$coyoteTimer.stop()
 		if not hasjumped and (hook ==null or not hook.latched):$JumpTimer.start()
-		var delta_y=JUMP_VELOCITY*((0.5 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump") else 0) + (delta*5))
+		var delta_y=JUMP_VELOCITY*((0.5 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump") else 0.0) + (delta*5))
 		print("jump velocity:",delta_y)
 		velocity.y+= delta_y
 		#print(velocity.y)
