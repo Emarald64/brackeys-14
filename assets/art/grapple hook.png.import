@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b224a8y34kpbj"
-path="res://.godot/imported/grapple hook.png-0cff7e97f88a760d3a0bb2f0a49c14eb.ctex"
+path="res://.godot/imported/grapple hook.png-aca5533ffd5f571fc5a4dae92e14649c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/grapple hook.png"
-dest_files=["res://.godot/imported/grapple hook.png-0cff7e97f88a760d3a0bb2f0a49c14eb.ctex"]
+source_file="res://Assets/art/grapple hook.png"
+dest_files=["res://.godot/imported/grapple hook.png-aca5533ffd5f571fc5a4dae92e14649c.ctex"]
 
 [params]
 
