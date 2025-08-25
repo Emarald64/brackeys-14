@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bl1ha2ljh62ex"]
+[gd_scene load_steps=11 format=3 uid="uid://bl1ha2ljh62ex"]
 
 [ext_resource type="Script" uid="uid://cpu0itkbgh580" path="res://scripts/checkpoint.gd" id="1_lbcco"]
 [ext_resource type="Texture2D" uid="uid://3flcba1kfnuu" path="res://assets/art/flag_off.png" id="2_i1pff"]
 [ext_resource type="Texture2D" uid="uid://cs4wbv1y5rcjf" path="res://assets/art/flag_red_a.png" id="3_opoc8"]
 [ext_resource type="Texture2D" uid="uid://hl0m5yc8vwsq" path="res://assets/art/flag_red_b.png" id="4_l0c30"]
 [ext_resource type="Texture2D" uid="uid://biidv0qmsryj5" path="res://assets/art/white.png" id="5_c45tw"]
+[ext_resource type="Texture2D" uid="uid://8td8m6signtr" path="res://assets/art/2d_lights_and_shadows_neutral_point_light.webp" id="6_55jpe"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w8ggu"]
 animations = [{
@@ -90,5 +91,11 @@ texture = ExtResource("5_c45tw")
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_55jpe")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-22, 0)
+shadow_enabled = true
+texture = ExtResource("6_55jpe")
+texture_scale = 0.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

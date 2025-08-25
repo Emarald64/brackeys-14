@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 		$coyoteTimer.stop()
 		if not hasjumped and (hook ==null or not hook.latched):$JumpTimer.start()
 		var delta_y=JUMP_VELOCITY*((0.5 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump") else 0.0) + (delta*5))
-		print("jump velocity:",delta_y)
+		#print("jump velocity:",delta_y)
 		velocity.y+= delta_y
 		#print(velocity.y)
 		if(hook!=null and hook.latched and position.distance_squared_to(hook.position)<2500):
@@ -86,4 +86,5 @@ func respawn():
 func pickup(area: Area2D) -> void:
 	if area.get_meta("pickupType")=="grapple":
 		canGrapple=true
+		area.queue_free()
  

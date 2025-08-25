@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cm3m8ts63u2c2"]
+[gd_scene load_steps=10 format=3 uid="uid://cm3m8ts63u2c2"]
 
 [ext_resource type="Texture2D" uid="uid://bdq5jyrcb3xng" path="res://assets/art/block_empty.png" id="1_4qbra"]
 [ext_resource type="Script" uid="uid://gik0dkp87jvb" path="res://scripts/grapple_block.gd" id="1_abthl"]
@@ -41,6 +41,9 @@ gravity = Vector3(0, 0, 0)
 scale_min = 4.0
 scale_max = 4.0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_p7i38"]
+polygon = PackedVector2Array(-32, 32, 32, 32, 32, -32, -32, -32)
+
 [node name="Grapple block" type="StaticBody2D"]
 collision_layer = 5
 collision_mask = 0
@@ -67,3 +70,6 @@ lifetime = 0.5
 preprocess = 0.5
 visibility_rect = Rect2(-330, -330, 660, 660)
 process_material = SubResource("ParticleProcessMaterial_nm6vr")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_p7i38")

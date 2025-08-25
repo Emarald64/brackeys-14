@@ -8,6 +8,7 @@ func _on_body_entered(body):
 		active = false
 		$AnimatedSprite2D.play("Up")
 		$GPUParticles2D.emitting=true
+		$PointLight2D.texture_scale=1.5
 	# Replace with function body.
  
  
