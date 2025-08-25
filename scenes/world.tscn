@@ -25,8 +25,8 @@ update_scale = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-603, -32)
+zoom = Vector2(0.75, 0.75)
 limit_smoothed = true
-position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 metadata/_edit_lock_ = true
