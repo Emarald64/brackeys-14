@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3xd2ts6l8m4q"
-path="res://.godot/imported/explamation.png-7f217554b8d8b047f6e1a20d03a9da24.ctex"
+uid="uid://ra05g3aul3vv"
+path="res://.godot/imported/button_square_line.png-a738b6a14c529efdace088ae6822e01f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/explamation.png"
-dest_files=["res://.godot/imported/explamation.png-7f217554b8d8b047f6e1a20d03a9da24.ctex"]
+source_file="res://assets/art/UI/button_square_line.png"
+dest_files=["res://.godot/imported/button_square_line.png-a738b6a14c529efdace088ae6822e01f.ctex"]
 
 [params]
 

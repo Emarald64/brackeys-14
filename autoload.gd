@@ -4,7 +4,7 @@ var player:CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player=get_tree().root.get_node("World/Player")
+	pass
 
 
 func closestPointOnRec(rec:Rect2,pos:Vector2) -> Vector2:

@@ -9,6 +9,9 @@ var started_timer=false
 var hook:Area2D=null
 @export var canGrapple=true
 
+func _ready():
+	Autoload.player=self
+
 func _process(delta: float) -> void:
 	if hook!=null:
 		$"Line2D".set_point_position(0,(hook.position-position))
@@ -37,8 +40,10 @@ func _physics_process(delta: float) -> void:
 		#if not hasjumped:
 			#$AudioStreamPlayer.play()
 		$coyoteTimer.stop()
-		if not hasjumped and (hook==null or not hook.latched):$JumpTimer.start()
-		velocity.y+= JUMP_VELOCITY*((0.5 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) else 0) + (delta*5))
+		if not hasjumped and (hook ==null or not hook.latched):$JumpTimer.start()
+		var delta_y=JUMP_VELOCITY*((0.5 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) else 0) + (delta*5))
+		print("jump velocity:",delta_y)
+		velocity.y+= delta_y
 		#print(velocity.y)
 		if(hook!=null and hook.latched and position.distance_squared_to(hook.position)<2500):
 			hook.retract() 
@@ -74,3 +79,9 @@ func _physics_process(delta: float) -> void:
 	velocity.x= lerp(velocity.x,direction*SPEED,(15 if is_on_floor() else 5) * delta)
 
 	move_and_slide()
+
+
+func pickup(area: Area2D) -> void:
+	if area.get_meta("pickUp")=="grapple":
+		canGrapple=true
+ 
