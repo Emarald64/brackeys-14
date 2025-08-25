@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://cm3m8ts63u2c2"]
 
-[ext_resource type="Texture2D" uid="uid://bdq5jyrcb3xng" path="res://assets/art/block_empty.png" id="1_4qbra"]
-[ext_resource type="Script" uid="uid://gik0dkp87jvb" path="res://scripts/grapple_block.gd" id="1_abthl"]
-[ext_resource type="Texture2D" uid="uid://c3xd2ts6l8m4q" path="res://assets/art/explamation.png" id="2_6i2pq"]
-[ext_resource type="Texture2D" uid="uid://biidv0qmsryj5" path="res://assets/art/white.png" id="4_p7i38"]
+[ext_resource type="Texture2D" uid="uid://bdq5jyrcb3xng" path="res://Assets/art/block_empty.png" id="1_4qbra"]
+[ext_resource type="Script" path="res://scripts/grapple_block.gd" id="1_abthl"]
+[ext_resource type="Texture2D" uid="uid://c3xd2ts6l8m4q" path="res://Assets/art/explamation.png" id="2_6i2pq"]
+[ext_resource type="Texture2D" uid="uid://biidv0qmsryj5" path="res://Assets/art/white.png" id="4_p7i38"]
 
 [sub_resource type="Shader" id="Shader_4qbra"]
 code = "shader_type canvas_item;

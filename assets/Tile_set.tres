@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=6 format=3 uid="uid://diw8lrh8lgf52"]
 
-[ext_resource type="Texture2D" uid="uid://ctk0jgiuyfn6v" path="res://assets/art/spritesheet-tiles-default.png" id="1_4qcni"]
-[ext_resource type="PackedScene" uid="uid://bl1ha2ljh62ex" path="res://scenes/checkpoint.tscn" id="2_3oaxy"]
+[ext_resource type="Texture2D" uid="uid://ctk0jgiuyfn6v" path="res://Assets/art/spritesheet-tiles-default.png" id="1_4qcni"]
+[ext_resource type="PackedScene" uid="uid://bl1ha2ljh62ex" path="res://Scenes/checkpoint.tscn" id="2_3oaxy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3oaxy"]
 friction = 0.0
