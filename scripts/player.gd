@@ -87,4 +87,5 @@ func pickup(area: Area2D) -> void:
 	if area.get_meta("pickupType")=="grapple":
 		canGrapple=true
 		area.queue_free()
+		# TODO: Show popup
  
