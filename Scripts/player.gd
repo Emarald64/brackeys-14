@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 	if velocity.y>200:$Eyes.position.y=5
 	elif velocity.y<-200:$Eyes.position.y=-5
 	else:$Eyes.position.y=0
-	
+ 	
 	if hook!=null:
 		$"Line2D".set_point_position(0,(hook.position-position))
 		$"Line2D".show()

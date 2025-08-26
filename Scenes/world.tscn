@@ -181,8 +181,3 @@ texture = SubResource("AtlasTexture_xo05s")
 
 [node name="Sprite2D" type="Sprite2D" parent="Tutorial Sign 2"]
 texture = ExtResource("10_e3hyu")
-
-[connection signal="body_entered" from="TileMapLayer/@Area2D@23653" to="TileMapLayer/@Area2D@23653" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@23654" to="TileMapLayer/@Area2D@23654" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@23655" to="TileMapLayer/@Area2D@23655" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@23659" to="TileMapLayer/@Area2D@23659" method="_on_body_entered"]

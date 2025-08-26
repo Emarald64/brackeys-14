@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7wyi73ua1ovg"]
+
+[ext_resource type="Script" uid="uid://1kccrhssiwap" path="res://Scripts/breakable_wall.gd" id="1_56yy1"]
+[ext_resource type="Texture2D" uid="uid://orpogay5f5o5" path="res://Assets/art/icon.svg" id="2_o8000"]
+[ext_resource type="PackedScene" uid="uid://bp3to4tcmepbr" path="res://Scenes/shard_emitter.tscn" id="3_er0o1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2ypx"]
+size = Vector2(128, 132)
+
+[node name="Breakable wall" type="AnimatableBody2D"]
+script = ExtResource("1_56yy1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_o8000")
+
+[node name="ShardEmitter" parent="Sprite2D" instance=ExtResource("3_er0o1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h2ypx")

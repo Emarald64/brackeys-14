@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=4 uid="uid://5cgcj80ypx2s"]
+[gd_scene load_steps=8 format=4 uid="uid://5cgcj80ypx2s"]
 
 [ext_resource type="Script" uid="uid://rvci64vv5shu" path="res://Scripts/world.gd" id="1_3dx25"]
 [ext_resource type="TileSet" uid="uid://diw8lrh8lgf52" path="res://Assets/Tile_set.tres" id="2_nuoa6"]
 [ext_resource type="PackedScene" uid="uid://cwi5w06g0u40e" path="res://Scenes/player.tscn" id="3_kri1i"]
 [ext_resource type="PackedScene" uid="uid://cm3m8ts63u2c2" path="res://Scenes/grapple_block.tscn" id="4_5qbqa"]
+[ext_resource type="Script" uid="uid://cvquv60tgvx62" path="res://Scripts/camera_2d.gd" id="4_waae5"]
+[ext_resource type="PackedScene" uid="uid://dyj0knq4jvvym" path="res://Scenes/lever.tscn" id="5_wf3wj"]
+[ext_resource type="PackedScene" uid="uid://c7wyi73ua1ovg" path="res://Scenes/breakable_wall.tscn" id="6_waae5"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_3dx25")
@@ -29,7 +32,7 @@ zoom = Vector2(0.75, 0.75)
 limit_smoothed = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-metadata/_edit_lock_ = true
+script = ExtResource("4_waae5")
 
 [node name="Grapple block" parent="." instance=ExtResource("4_5qbqa")]
 position = Vector2(800, -672)
@@ -50,3 +53,12 @@ position = Vector2(-880, 1976)
 
 [node name="Grapple block3" parent="." instance=ExtResource("4_5qbqa")]
 position = Vector2(-89, -1251)
+
+[node name="Lever" parent="." instance=ExtResource("5_wf3wj")]
+position = Vector2(-622, 2146)
+
+[node name="Breakable wall" parent="." instance=ExtResource("6_waae5")]
+position = Vector2(-352, 2116)
+
+[connection signal="body_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@98103" to="TileMapLayer/@Area2D@98103" method="_on_body_entered"]

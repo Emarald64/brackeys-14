@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dcqb3712locuc"]
+
+[node name="Shard" type="RigidBody2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

@@ -101,4 +101,27 @@ grow_vertical = 0
 theme = ExtResource("2_s4lrb")
 text = "Disable Screen Shake"
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.5
+offset_right = 100.5
+offset_bottom = 40.0
+grow_horizontal = 2
+color = Color(0.179695, 0.0606387, 0.239709, 1)
+
+[node name="Title" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_s4lrb")
+text = "Placeholder Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="toggled" from="ScreenShake" to="." method="_on_screen_shake_toggled"]

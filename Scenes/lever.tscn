@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://dyj0knq4jvvym"]
+
+[ext_resource type="Script" uid="uid://bxq18u7ib2l2r" path="res://Scripts/lever.gd" id="1_fhlr4"]
+[ext_resource type="Texture2D" uid="uid://ctk0jgiuyfn6v" path="res://Assets/art/spritesheet-tiles-default.png" id="2_jjeqf"]
+[ext_resource type="Texture2D" uid="uid://8td8m6signtr" path="res://Assets/art/2d_lights_and_shadows_neutral_point_light.webp" id="3_31g2e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ihno"]
+size = Vector2(62, 53)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1u0ni"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chrb4"]
+atlas = ExtResource("2_jjeqf")
+region = Rect2(704, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojti0"]
+atlas = ExtResource("2_jjeqf")
+region = Rect2(704, 512, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dbgid"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chrb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojti0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Lever" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_fhlr4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_2ihno")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_1u0ni")
+sprite_frames = SubResource("SpriteFrames_dbgid")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 27)
+texture = ExtResource("3_31g2e")
+texture_scale = 0.33
+
+[connection signal="body_entered" from="." to="." method="hit"]
