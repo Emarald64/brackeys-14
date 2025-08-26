@@ -8,18 +8,14 @@ var trauma = 0.0
 var trauma_power = 2
 var trauma_locked= false
 
-var disableShake=false
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
 	Autoload.camera=self
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug-2"):
 		add_trauma(0.5)
-	if trauma and not disableShake:
+	if trauma and Autoload.cameraShake:
 		if not trauma_locked:trauma = max(trauma - decay * delta, 0)
 		var amount = pow(trauma, trauma_power)
 		rotation = max_roll * amount * randf_range(-1, 1)
