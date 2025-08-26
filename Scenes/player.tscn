@@ -1,0 +1,149 @@
+[gd_scene load_steps=18 format=3 uid="uid://cwi5w06g0u40e"]
+
+[ext_resource type="Script" uid="uid://dlhh7vi3735i6" path="res://Scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://4w0kycqhsaw2" path="res://Assets/art/player.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://8td8m6signtr" path="res://Assets/art/2d_lights_and_shadows_neutral_point_light.webp" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://mr7w5tucd8j" path="res://Assets/art/eyes.png" id="4_vgqql"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qhqgy"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3smsa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3wgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkybt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgqql")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
+size = Vector2(50, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
+radius = 300.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
+atlas = ExtResource("4_vgqql")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
+atlas = ExtResource("4_vgqql")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ek2"]
+atlas = ExtResource("4_vgqql")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tx1dd"]
+animations = [{
+"frames": [{
+"duration": 100.0,
+"texture": SubResource("AtlasTexture_3smsa")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_8erm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ek2")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_8erm5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 33
+floor_snap_length = 4.3
+script = ExtResource("1_3vyb7")
+canGrapple = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_qhqgy")
+position = Vector2(-4.76837e-07, -3.5)
+scale = Vector2(1.75, 1.75)
+sprite_frames = SubResource("SpriteFrames_3smsa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qlg0r")
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="coyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Super Graple Point Locater 300" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Super Graple Point Locater 300"]
+shape = SubResource("CircleShape2D_dqkch")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+
+[node name="Collect" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collect"]
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+shadow_filter_smooth = 16.1
+texture = ExtResource("3_qhqgy")
+texture_scale = 1.44
+
+[node name="Eyes" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.75, 1.75)
+sprite_frames = SubResource("SpriteFrames_tx1dd")
+frame_progress = 0.658061
+
+[connection signal="area_entered" from="Collect" to="." method="pickup"]
+[connection signal="body_entered" from="Hurtbox" to="." method="respawn" unbinds=1]

@@ -13,11 +13,11 @@ config_version=5
 config/name="brackeys 14"
 run/main_scene="uid://c8325sb5uxmcb"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://assets/art/icon.svg"
+config/icon="res://Assets/art/icon.svg"
 
 [autoload]
 
-Autoload="*res://scripts/autoload.gd"
+Autoload="*res://Scripts/autoload.gd"
 
 [display]
 

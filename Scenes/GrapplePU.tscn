@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkkkba2gxfy03"]
+
+[ext_resource type="Texture2D" uid="uid://b224a8y34kpbj" path="res://Assets/art/grapple hook.png" id="1_8u10g"]
+[ext_resource type="Texture2D" uid="uid://biidv0qmsryj5" path="res://Assets/art/white.png" id="2_f5ume"]
+[ext_resource type="Texture2D" uid="uid://8td8m6signtr" path="res://Assets/art/2d_lights_and_shadows_neutral_point_light.webp" id="3_c60xn"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tecl0"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 300.0
+initial_velocity_max = 350.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+damping_min = 4.0
+damping_max = 7.0
+scale_min = 4.0
+scale_max = 8.0
+scale_over_velocity_min = 111.86
+scale_over_velocity_max = 149.15
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_imtvb"]
+light_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q72en"]
+size = Vector2(160, 320)
+
+[node name="Grapple Pickup" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 8
+collision_mask = 0
+metadata/pickupType = "grapple"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 50
+texture = ExtResource("2_f5ume")
+preprocess = 1.0
+visibility_rect = Rect2(-300, -300, 600, 600)
+process_material = SubResource("ParticleProcessMaterial_tecl0")
+
+[node name="GrappleHook" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_imtvb")
+position = Vector2(0, -11)
+scale = Vector2(10, 10)
+texture = ExtResource("1_8u10g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_q72en")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 2.19
+texture = ExtResource("3_c60xn")
+texture_scale = 2.87

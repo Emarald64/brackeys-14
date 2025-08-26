@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://o17fmhr72r6k"]
+
+[ext_resource type="Script" uid="uid://dy1n4q5l0vy2x" path="res://Scripts/moving_platform.gd" id="1_ms375"]
+[ext_resource type="Texture2D" uid="uid://orpogay5f5o5" path="res://Assets/art/icon.svg" id="2_1tdcd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tdcd"]
+size = Vector2(130, 132)
+
+[node name="Moving Platform" type="PathFollow2D"]
+rotates = false
+loop = false
+script = ExtResource("1_ms375")
+movementSpeed = 0.5
+
+[node name="platform" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="platform"]
+texture = ExtResource("2_1tdcd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
+shape = SubResource("RectangleShape2D_1tdcd")
