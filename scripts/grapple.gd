@@ -4,6 +4,7 @@ var retracting = false
 var velocity: Vector2
 var player:CharacterBody2D
 var stuck=false
+var latchLocation:Vector2
 # Called when the node enters the scene tree for the first time.
 #func _ready():
 	#pass # Replace with function body.
@@ -28,7 +29,10 @@ func _physics_process(delta: float) -> void:
 			else:velocity=2000*offset/offset.length()
 		if not stuck:position += velocity*delta
 func hit():
-	latched = not retracting
+	if not retracting:
+		latched = true
+		#if position.distance_squared_to(latchLocation)<729:
+		position=latchLocation
 	
 func retract() -> void:
 	retracting=true

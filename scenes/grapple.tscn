@@ -24,9 +24,14 @@ polygon = PackedVector2Array(-1, -27, 1, -27, 3, -25, 5, -21, 7, -15, 7, 3, -7, 
 position = Vector2(0, -11)
 collision_layer = 0
 
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Grapple Fail"]
+position = Vector2(0, 11)
+polygon = PackedVector2Array(-1, -27, 1, -27, 3, -25, 5, -21, 7, -15, 7, 3, -7, 3, -7, -15, -5, -21, -3, -25)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Grapple Fail"]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_g8ry6")
+disabled = true
 
 [connection signal="body_entered" from="." to="." method="hit" unbinds=1]
 [connection signal="body_entered" from="Grapple Fail" to="." method="testGrappleFail" unbinds=1]

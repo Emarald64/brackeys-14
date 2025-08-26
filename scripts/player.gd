@@ -51,7 +51,6 @@ func _physics_process(delta: float) -> void:
 		if hook==null:
 			var hookPoints=$"Super Graple Point Locater 300".get_overlapping_bodies()
 			if len(hookPoints)>0:
-				hook=hookScene.instantiate()
 				var closestHook:Node2D
 				var closestHookDistance=100000000000000000
 				for area in hookPoints:
@@ -59,10 +58,13 @@ func _physics_process(delta: float) -> void:
 					if closestHookDistance>distance:
 						closestHook=area
 						closestHookDistance=distance
-				hook.position=position
 				var target=Autoload.closestPointOnRec(Rect2(closestHook.global_position- (closestHook.get_node("CollisionShape2D").shape.size/2),closestHook.get_node("CollisionShape2D").shape.size),position)
+				print(target)
+				hook=hookScene.instantiate()
+				hook.position=position
 				hook.rotation=(target-position).angle()+(PI/2) 
 				hook.velocity=Vector2.from_angle(hook.rotation-(PI/2))*2000
+				hook.latchLocation=target-(Vector2(0,-26).rotated(hook.rotation))
 				hook.player=self
 				add_sibling(hook)
 		elif hook.latched:
@@ -89,5 +91,5 @@ func pickup(area: Area2D) -> void:
 		canGrapple=true
 		area.queue_free()
 		Autoload.camera.add_trauma(0.5)
-		# TODO: Show popup
+		get_node("../AnimationPlayer").play("Show tutorial sign 2")
  

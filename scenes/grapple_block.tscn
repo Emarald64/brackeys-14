@@ -42,7 +42,7 @@ scale_min = 4.0
 scale_max = 4.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_p7i38"]
-polygon = PackedVector2Array(-32, 32, 32, 32, 32, -32, -32, -32)
+polygon = PackedVector2Array(-32, 24, -24, 32, 24, 32, 32, 24.2605, 32, -24, 24, -32, -24, -32, -32, -24)
 
 [node name="Grapple block" type="StaticBody2D"]
 collision_layer = 5
