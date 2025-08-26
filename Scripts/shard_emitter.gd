@@ -2,8 +2,8 @@ extends Node2D
 
 @export_range(0, 200) var nbr_of_shards := 20 #sets the number of break points
 @export var threshhold := 10.0 #prevents slim triangles being created at the sprite edges
-@export var min_impulse := 50.0 #impuls of the shards upon breaking
-@export var max_impulse := 200.0
+@export var min_impulse := 500.0 #impuls of the shards upon breaking
+@export var max_impulse := 2000.0
 @export var lifetime := 5.0 #lifetime of the shards
 @export var display_triangles := false #debugging: display sprite triangulation
 
@@ -75,11 +75,13 @@ func add_shards() -> void:
 func shatter() -> void:
 	randomize()
 	get_parent().self_modulate.a = 0
-	for s in shards:
+	for s:RigidBody2D in shards:
+		print(s.position)
 		var direction = Vector2.UP.rotated(randf_range(0, 2*PI))
 		var impulse = randf_range(min_impulse, max_impulse)
-		s.apply_central_impulse(direction * impulse)
-		s.get_node("CollisionPolygon2D").disabled = false
+		s.set_deferred("freeze",false)
+		s.get_node("CollisionPolygon2D").set_deferred("disabled",false)
+		s.call_deferred('apply_central_impulse',direction * impulse)
 		s.show()
 	$DeleteTimer.start(lifetime)
 

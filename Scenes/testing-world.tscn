@@ -17,7 +17,7 @@ tile_set = ExtResource("2_nuoa6")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("curCP") instance=ExtResource("3_kri1i")]
-position = Vector2(-603, -32)
+position = Vector2(-710, 2100)
 floor_max_angle = 0.523599
 curCP = NodePath("../Spawnpoint")
 
@@ -27,7 +27,7 @@ update_rotation = false
 update_scale = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-603, -32)
+position = Vector2(-710, 2100)
 zoom = Vector2(0.75, 0.75)
 limit_smoothed = true
 drag_horizontal_enabled = true
@@ -61,4 +61,5 @@ position = Vector2(-622, 2146)
 position = Vector2(-352, 2116)
 
 [connection signal="body_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@98103" to="TileMapLayer/@Area2D@98103" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@122038" to="TileMapLayer/@Area2D@122038" method="_on_body_entered"]
+[connection signal="activate" from="Lever" to="Breakable wall" method="_on_activate"]

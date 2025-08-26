@@ -14,6 +14,8 @@ script = ExtResource("1_56yy1")
 texture = ExtResource("2_o8000")
 
 [node name="ShardEmitter" parent="Sprite2D" instance=ExtResource("3_er0o1")]
+nbr_of_shards = 8
+display_triangles = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h2ypx")

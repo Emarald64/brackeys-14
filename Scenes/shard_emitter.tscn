@@ -6,3 +6,6 @@
 script = ExtResource("1_7onvn")
 
 [node name="DeleteTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_DeleteTimer_timeout"]

@@ -9,4 +9,5 @@ func hit(body: Node2D) -> void:
 		activate.emit()
 		$AnimatedSprite2D.frame=1
 		$PointLight2D.texture_scale=1
+		powered=true
 	
