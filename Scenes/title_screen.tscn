@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://xbprbjdai8so"]
+[gd_scene load_steps=6 format=3 uid="uid://xbprbjdai8so"]
 
 [ext_resource type="Script" uid="uid://c3smpdvnjq6dt" path="res://Scripts/title_screen.gd" id="1_sa3yf"]
 [ext_resource type="Theme" uid="uid://87oda23khtke" path="res://Assets/theme.tres" id="2_s4lrb"]
@@ -56,6 +56,9 @@ shader_parameter/shades = 3.0
 shader_parameter/steps = 3
 shader_parameter/tint = Vector3(0.5, 0.5, 0.7)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3fck"]
+bg_color = Color(0.23, 0.23, 0.23, 0.913725)
+
 [node name="Title Screen" type="ColorRect"]
 material = SubResource("ShaderMaterial_dc4i4")
 anchors_preset = 15
@@ -101,27 +104,29 @@ grow_vertical = 0
 theme = ExtResource("2_s4lrb")
 text = "Disable Screen Shake"
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Title Container" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -100.5
-offset_right = 100.5
-offset_bottom = 40.0
+offset_left = -333.0
+offset_top = 51.0
+offset_right = 333.0
+offset_bottom = 147.0
 grow_horizontal = 2
-color = Color(0.179695, 0.0606387, 0.239709, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_p3fck")
 
-[node name="Title" type="Label" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Title" type="Label" parent="Title Container"]
+layout_mode = 2
 theme = ExtResource("2_s4lrb")
+theme_override_font_sizes/font_size = 80
 text = "Placeholder Title"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Controlls" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="toggled" from="ScreenShake" to="." method="_on_screen_shake_toggled"]
