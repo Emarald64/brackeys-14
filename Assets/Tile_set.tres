@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ctk0jgiuyfn6v" path="res://Assets/art/spritesheet-tiles-default.png" id="1_b7a5u"]
 [ext_resource type="PackedScene" uid="uid://bl1ha2ljh62ex" path="res://Scenes/checkpoint.tscn" id="2_rq55a"]
 [ext_resource type="PackedScene" uid="uid://cm3m8ts63u2c2" path="res://Scenes/grapple_block.tscn" id="3_eg0b7"]
-[ext_resource type="PackedScene" uid="uid://cl7nl6as7rc3v" path="res://Scenes/torch.tscn" id="4_apwb6"]
+[ext_resource type="PackedScene" path="res://Scenes/torch.tscn" id="4_apwb6"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_p4pot"]
 polygon = PackedVector2Array(-32, -4, 32, 28, 32, 32, -32, 32)
