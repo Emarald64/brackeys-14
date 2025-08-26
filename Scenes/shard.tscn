@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dcqb3712locuc"]
+[gd_scene load_steps=0 format=3 uid="uid://dcqb3712locuc"]
 
 [node name="Shard" type="RigidBody2D"]
 collision_layer = 64
