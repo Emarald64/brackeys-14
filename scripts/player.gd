@@ -82,10 +82,12 @@ func respawn():
 	velocity=Vector2.ZERO
 	if hook !=null:hook.queue_free()
 	position=curCP.position
+	Autoload.camera.add_trauma(0.3)
 
 func pickup(area: Area2D) -> void:
 	if area.get_meta("pickupType")=="grapple":
 		canGrapple=true
 		area.queue_free()
+		Autoload.camera.add_trauma(0.5)
 		# TODO: Show popup
  

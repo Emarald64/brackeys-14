@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://xbprbjdai8so"]
+[gd_scene load_steps=5 format=3 uid="uid://xbprbjdai8so"]
 
-[ext_resource type="Texture2D" uid="uid://dcwqsvns2ukta" path="res://assets/art/UI/button_square_depth_line.png" id="1_sa3yf"]
-[ext_resource type="Texture2D" uid="uid://ra05g3aul3vv" path="res://assets/art/UI/button_square_line.png" id="2_s4lrb"]
+[ext_resource type="Script" uid="uid://c3smpdvnjq6dt" path="res://scripts/title_screen.gd" id="1_sa3yf"]
+[ext_resource type="Theme" uid="uid://87oda23khtke" path="res://assets/theme.tres" id="2_s4lrb"]
 
 [sub_resource type="Shader" id="Shader_mgrm8"]
 code = "//Original shadertoy source: https://www.shadertoy.com/view/mtfBRr
@@ -56,38 +56,6 @@ shader_parameter/shades = 3.0
 shader_parameter/steps = 3
 shader_parameter/tint = Vector3(0.5, 0.5, 0.7)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa3yf"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e54dn"]
-texture = ExtResource("1_sa3yf")
-texture_margin_left = 8.0
-texture_margin_top = 8.0
-texture_margin_right = 8.0
-texture_margin_bottom = 12.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3yumr"]
-content_margin_top = 4.0
-texture = ExtResource("2_s4lrb")
-texture_margin_left = 8.0
-texture_margin_top = 12.0
-texture_margin_right = 8.0
-texture_margin_bottom = 8.0
-region_rect = Rect2(0, 0, 64, 64)
-
-[sub_resource type="Theme" id="Theme_cs5ya"]
-Button/colors/font_color = Color(0, 0, 0, 1)
-Button/colors/font_focus_color = Color(0, 0, 0, 1)
-Button/colors/font_hover_color = Color(0, 0, 0, 1)
-Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-Button/colors/font_outline_color = Color(1, 1, 1, 1)
-Button/colors/font_pressed_color = Color(0, 0, 0, 1)
-Button/font_sizes/font_size = 32
-Button/styles/focus = SubResource("StyleBoxEmpty_sa3yf")
-Button/styles/hover = SubResource("StyleBoxTexture_e54dn")
-Button/styles/hover_pressed = SubResource("StyleBoxTexture_3yumr")
-Button/styles/normal = SubResource("StyleBoxTexture_e54dn")
-Button/styles/pressed = SubResource("StyleBoxTexture_3yumr")
-
 [node name="Title Screen" type="ColorRect"]
 material = SubResource("ShaderMaterial_dc4i4")
 anchors_preset = 15
@@ -96,6 +64,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.37925, 0.674461, 0.564561, 1)
+script = ExtResource("1_sa3yf")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -112,6 +81,24 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 pivot_offset = Vector2(58, 28.75)
-theme = SubResource("Theme_cs5ya")
+theme = ExtResource("2_s4lrb")
 theme_override_font_sizes/font_size = 32
 text = "Play"
+
+[node name="ScreenShake" type="CheckButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -139.0
+offset_right = 191.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_s4lrb")
+text = "Disable Screen Shake"
+
+[connection signal="toggled" from="ScreenShake" to="." method="_on_screen_shake_toggled"]

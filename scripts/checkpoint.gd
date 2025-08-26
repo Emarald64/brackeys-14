@@ -9,6 +9,7 @@ func _on_body_entered(body):
 		$AnimatedSprite2D.play("Up")
 		$GPUParticles2D.emitting=true
 		$PointLight2D.texture_scale=1.5
+		Autoload.camera.add_trauma(0.2)
 	# Replace with function body.
  
  
