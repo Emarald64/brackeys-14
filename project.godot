@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="brackeys 14"
-run/main_scene="uid://xbprbjdai8so"
+run/main_scene="uid://c8325sb5uxmcb"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+run/max_fps=60
 config/icon="uid://b224a8y34kpbj"
 
 [autoload]
