@@ -7,6 +7,7 @@ const hookScene=preload("res://Scenes/grapple.tscn")
 var hasjumped=false
 var started_timer=false
 var hook:Area2D=null
+var deathCount=0
 @export var canGrapple=true
 
 func _ready():
@@ -88,6 +89,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func respawn():
+	deathCount+=1
 	velocity=Vector2.ZERO
 	if hook !=null:hook.queue_free()
 	position=curCP.position

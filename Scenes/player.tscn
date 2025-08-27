@@ -141,7 +141,7 @@ texture_scale = 1.44
 
 [node name="Eyes" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(1.75, 1.75)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_tx1dd")
 frame_progress = 0.658061
 

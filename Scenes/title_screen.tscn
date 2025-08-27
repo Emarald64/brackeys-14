@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://xbprbjdai8so"]
+[gd_scene load_steps=10 format=3 uid="uid://xbprbjdai8so"]
 
 [ext_resource type="Script" uid="uid://c3smpdvnjq6dt" path="res://Scripts/title_screen.gd" id="1_sa3yf"]
 [ext_resource type="Theme" uid="uid://87oda23khtke" path="res://Assets/theme.tres" id="2_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://d3vc8bc2adnuw" path="res://Assets/keyboard-&-mouse_sheet_default.png" id="3_4gxqj"]
 
 [sub_resource type="Shader" id="Shader_mgrm8"]
 code = "//Original shadertoy source: https://www.shadertoy.com/view/mtfBRr
@@ -59,6 +60,19 @@ shader_parameter/tint = Vector3(0.5, 0.5, 0.7)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3fck"]
 bg_color = Color(0.23, 0.23, 0.23, 0.913725)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twnyg"]
+bg_color = Color(0.16, 0.16, 0.16, 0.788235)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55kwv"]
+atlas = ExtResource("3_4gxqj")
+region = Rect2(328, 840, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12m1t"]
+atlas = ExtResource("3_4gxqj")
+region = Rect2(328, 200, 48, 48)
+
 [node name="Title Screen" type="ColorRect"]
 material = SubResource("ShaderMaterial_dc4i4")
 anchors_preset = 15
@@ -77,13 +91,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -59.0
-offset_top = -32.0
+offset_top = -39.0
 offset_right = 59.0
-offset_bottom = 46.0
+offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-pivot_offset = Vector2(58, 28.75)
+pivot_offset = Vector2(57, 34.875)
 theme = ExtResource("2_s4lrb")
 theme_override_font_sizes/font_size = 32
 text = "Play"
@@ -95,24 +109,25 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -190.0
-offset_top = -139.0
-offset_right = 191.0
-offset_bottom = -74.0
+offset_left = 258.0
+offset_top = -136.0
+offset_right = 520.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_s4lrb")
 text = "Disable Screen Shake"
+autowrap_mode = 2
 
 [node name="Title Container" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -333.0
-offset_top = 51.0
-offset_right = 333.0
-offset_bottom = 147.0
+offset_left = -332.0
+offset_top = 46.0
+offset_right = 334.0
+offset_bottom = 142.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_p3fck")
 
@@ -124,9 +139,66 @@ text = "Placeholder Title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Controlls" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Controls" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -146.0
+offset_right = -500.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_twnyg")
+
+[node name="Label" type="Label" parent="Controls"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_top = 10.0
+offset_right = 67.5
+offset_bottom = 48.0
+grow_horizontal = 2
+theme = ExtResource("2_s4lrb")
+text = "Controls"
+
+[node name="FlowContainer" type="HBoxContainer" parent="Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Arrows" type="TextureRect" parent="Controls/FlowContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_55kwv")
+stretch_mode = 2
+
+[node name="Movement" type="RichTextLabel" parent="Controls/FlowContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme = ExtResource("2_s4lrb")
+bbcode_enabled = true
+text = "[b]: Movement[/b]
+Up and down can be used to fall slower or faster"
+fit_content = true
+scroll_active = false
+
+[node name="Space" type="TextureRect" parent="Controls/FlowContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_12m1t")
+stretch_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Controls/FlowContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("2_s4lrb")
+bbcode_enabled = true
+text = "[b]: Jump[/b]"
 
 [connection signal="toggled" from="ScreenShake" to="." method="_on_screen_shake_toggled"]
