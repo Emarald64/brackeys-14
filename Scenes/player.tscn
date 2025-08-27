@@ -134,6 +134,7 @@ collision_mask = 16
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+range_z_min = -500
 shadow_enabled = true
 shadow_filter_smooth = 16.1
 texture = ExtResource("3_qhqgy")
