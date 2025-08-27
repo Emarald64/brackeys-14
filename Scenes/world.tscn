@@ -291,11 +291,3 @@ shape = SubResource("RectangleShape2D_ikia7")
 tile_map_data = PackedByteArray("AABNAPD/AAAKAAgAAABHAOn/AAAKAAgAAABHAOz/AAAKAAgAAABNAOb/AAAKAAgAAAA=")
 enabled = false
 tile_set = ExtResource("1_nnsk1")
-
-[connection signal="body_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@128243" to="TileMapLayer/@Area2D@128243" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@128248" to="TileMapLayer/@Area2D@128248" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@128260" to="TileMapLayer/@Area2D@128260" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@128261" to="TileMapLayer/@Area2D@128261" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@128265" to="TileMapLayer/@Area2D@128265" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@128266" to="TileMapLayer/@Area2D@128266" method="_on_body_entered"]

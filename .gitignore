@@ -18,3 +18,5 @@ mono_crash.*.json
 exports/
 
 Scenes/testing-world.tscn
+
+version.txt
