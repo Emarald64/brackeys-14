@@ -47,7 +47,7 @@ radius = 200.0
 size = Vector2(48, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(48, 48)
+size = Vector2(46, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
 atlas = ExtResource("4_vgqql")
@@ -96,6 +96,7 @@ scale = Vector2(1.75, 1.75)
 sprite_frames = SubResource("SpriteFrames_3smsa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="JumpTimer" type="Timer" parent="."]
@@ -126,7 +127,6 @@ collision_mask = 8
 shape = SubResource("RectangleShape2D_g2els")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 16
 

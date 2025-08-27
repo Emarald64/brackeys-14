@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		if $AnimatedSprite2D.frame==0 or not $JumpTimer.is_stopped():$AnimatedSprite2D.frame=2
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta * (0.8 if hook != null and hook.latched else 1)
 		if not started_timer:
 			$coyoteTimer.start()
 			started_timer=true
