@@ -138,13 +138,14 @@ range_z_min = -500
 shadow_enabled = true
 shadow_filter_smooth = 16.1
 texture = ExtResource("3_qhqgy")
-texture_scale = 1.44
+texture_scale = 1.5
 
 [node name="Eyes" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_qhqgy")
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_tx1dd")
 frame_progress = 0.658061
 
 [connection signal="area_entered" from="Collect" to="." method="pickup"]
-[connection signal="body_entered" from="Hurtbox" to="." method="respawn" unbinds=1]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

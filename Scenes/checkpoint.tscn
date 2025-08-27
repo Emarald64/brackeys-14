@@ -92,7 +92,7 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_55jpe")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." groups=["ReduceLight"]]
 position = Vector2(-22, 0)
 shadow_enabled = true
 texture = ExtResource("6_55jpe")

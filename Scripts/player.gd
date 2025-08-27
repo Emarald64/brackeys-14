@@ -90,15 +90,28 @@ func _physics_process(delta: float) -> void:
 
 func respawn():
 	deathCount+=1
+	print('respawn')
 	velocity=Vector2.ZERO
 	if hook !=null:hook.queue_free()
 	position=curCP.position
 	Autoload.camera.add_trauma(0.3)
+	await get_tree().physics_frame
+	var dark= $Hurtbox.overlaps_area(get_node("../Dark Zone"))
+	get_node("../CanvasModulate").color=(Color(0.392,0.392,0.392) if dark else Color(1,1,1))
+	$PointLight2D.enabled=dark
+	$PointLight2D.texture_scale=(1.5 if dark else 0)
+	get_tree().set_group("ReduceLight","enabled",dark)
 
 func pickup(area: Area2D) -> void:
 	if area.get_meta("pickupType")=="grapple":
 		canGrapple=true
 		area.queue_free()
+		print("grapple pickup")
 		Autoload.camera.add_trauma(0.5)
 		get_node("../AnimationPlayer").play("Show tutorial sign 2")
  
+
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	print(body.name)
+	if body.name!="Dark Zone":respawn()

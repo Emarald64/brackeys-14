@@ -15,8 +15,9 @@ func _ready():
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug-2"):
 		add_trauma(0.5)
+		print("debug trauma")
 	if trauma and Autoload.cameraShake:
-		if not trauma_locked:trauma = max(trauma - decay * delta, 0)
+		if not trauma_locked:trauma = max(trauma - decay * delta, 0.0)
 		var amount = pow(trauma, trauma_power)
 		rotation = max_roll * amount * randf_range(-1, 1)
 		offset.x = max_offset.x * amount * randf_range(-1, 1)
