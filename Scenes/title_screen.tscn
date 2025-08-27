@@ -1,68 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://xbprbjdai8so"]
+[gd_scene load_steps=13 format=3 uid="uid://xbprbjdai8so"]
 
 [ext_resource type="Script" uid="uid://c3smpdvnjq6dt" path="res://Scripts/title_screen.gd" id="1_sa3yf"]
+[ext_resource type="Material" uid="uid://dssl1f22j2288" path="res://Assets/new_shader_material.tres" id="1_twnyg"]
 [ext_resource type="Theme" uid="uid://87oda23khtke" path="res://Assets/theme.tres" id="2_s4lrb"]
 [ext_resource type="Texture2D" uid="uid://d3vc8bc2adnuw" path="res://Assets/keyboard-&-mouse_sheet_default.png" id="3_4gxqj"]
-
-[sub_resource type="Shader" id="Shader_mgrm8"]
-code = "//Original shadertoy source: https://www.shadertoy.com/view/mtfBRr
-//Credits to Leon Denise
-//https://leon196.github.io/
-//(@leondenise): https://twitter.com/leondenise
-shader_type canvas_item;
-
-uniform vec2 R = vec2(.8, .6);
-uniform float scale = 0.5;
-uniform float speed = 1.0;
-uniform vec3 direction = vec3(1,1,0);
-uniform float distortion = 0.5;
-uniform float layers = 2.;
-uniform float shades = 3.;
-uniform int steps = 6;
-
-uniform vec3 tint = vec3(.459,.765,1.);
-
-float gyroid (vec3 seed) { return dot(sin(seed),cos(seed.yzx)); }
-
-float fbm (vec3 seed)
-{
-    float result = 0., a = .5;
-    for (int i = 0; i < steps; ++i, a /= 2.) {
-        seed += direction * TIME*speed*.01/a;
-        seed.z += result*distortion;
-        result += gyroid(seed/a)*a;
-    }
-    return result;
-}
-
-void fragment()
-{
-    vec2 p = (2.*UV-R)/R.y;
-    float shape = fbm(vec3(p*scale, 0.));
-    float gradient = fract(shape*layers);
-    float shade = round(pow(gradient, 4.)*shades)/shades;
-    vec3 color = mix(tint*mix(.6,.8,gradient), vec3(1), shade);
-    COLOR = vec4(color,1.0);
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dc4i4"]
-shader = SubResource("Shader_mgrm8")
-shader_parameter/R = Vector2(0.8, 0.6)
-shader_parameter/scale = 0.75
-shader_parameter/speed = 0.1
-shader_parameter/direction = Vector3(1, 1, 0)
-shader_parameter/distortion = 0.5
-shader_parameter/layers = 2.0
-shader_parameter/shades = 3.0
-shader_parameter/steps = 3
-shader_parameter/tint = Vector3(0.5, 0.5, 0.7)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3fck"]
 bg_color = Color(0.23, 0.23, 0.23, 0.913725)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twnyg"]
 bg_color = Color(0.16, 0.16, 0.16, 0.788235)
-corner_radius_top_left = 20
 corner_radius_top_right = 20
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55kwv"]
@@ -73,17 +20,95 @@ region = Rect2(328, 840, 48, 48)
 atlas = ExtResource("3_4gxqj")
 region = Rect2(328, 200, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_twnyg"]
+atlas = ExtResource("3_4gxqj")
+region = Rect2(328, 264, 48, 48)
+
+[sub_resource type="Animation" id="Animation_4gxqj"]
+resource_name = "Fade Out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"changeScene"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/fade")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_twnyg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/fade")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_55kwv"]
+_data = {
+&"Fade Out": SubResource("Animation_4gxqj"),
+&"RESET": SubResource("Animation_twnyg")
+}
+
 [node name="Title Screen" type="ColorRect"]
-material = SubResource("ShaderMaterial_dc4i4")
+material = ExtResource("1_twnyg")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.37925, 0.674461, 0.564561, 1)
+color = Color(0.0915334, 0.210644, 0.167504, 1)
 script = ExtResource("1_sa3yf")
 
-[node name="Button" type="Button" parent="."]
+[node name="Play Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -99,7 +124,6 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 pivot_offset = Vector2(57, 34.875)
 theme = ExtResource("2_s4lrb")
-theme_override_font_sizes/font_size = 32
 text = "Play"
 
 [node name="ScreenShake" type="CheckButton" parent="."]
@@ -121,13 +145,14 @@ autowrap_mode = 2
 
 [node name="Title Container" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -332.0
-offset_top = 46.0
-offset_right = 334.0
-offset_bottom = 142.0
+anchors_preset = -1
+anchor_left = 0.500434
+anchor_top = 0.0648148
+anchor_right = 0.500434
+anchor_bottom = 0.0648148
+offset_left = -282.5
+offset_right = 282.5
+offset_bottom = 95.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_p3fck")
 
@@ -135,7 +160,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_p3fck")
 layout_mode = 2
 theme = ExtResource("2_s4lrb")
 theme_override_font_sizes/font_size = 80
-text = "Placeholder Title"
+text = "Grappling To It"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -146,8 +171,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -146.0
-offset_right = -500.0
+offset_top = -316.0
+offset_right = -878.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_twnyg")
@@ -157,22 +182,26 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -67.5
-offset_top = 10.0
-offset_right = 67.5
-offset_bottom = 48.0
+offset_left = -137.0
+offset_right = 137.0
+offset_bottom = 38.0
 grow_horizontal = 2
 theme = ExtResource("2_s4lrb")
 text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="FlowContainer" type="HBoxContainer" parent="Controls"]
+[node name="FlowContainer" type="GridContainer" parent="Controls"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 62.0
+offset_left = 14.0
+offset_top = 48.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/v_separation = 15
+columns = 2
 
 [node name="Arrows" type="TextureRect" parent="Controls/FlowContainer"]
 layout_mode = 2
@@ -180,11 +209,11 @@ texture = SubResource("AtlasTexture_55kwv")
 stretch_mode = 2
 
 [node name="Movement" type="RichTextLabel" parent="Controls/FlowContainer"]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme = ExtResource("2_s4lrb")
 bbcode_enabled = true
-text = "[b]: Movement[/b]
+text = "[indent][b]Movement[/b]
 Up and down can be used to fall slower or faster"
 fit_content = true
 scroll_active = false
@@ -194,11 +223,32 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_12m1t")
 stretch_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Controls/FlowContainer"]
-custom_minimum_size = Vector2(150, 0)
+[node name="Jump" type="RichTextLabel" parent="Controls/FlowContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme = ExtResource("2_s4lrb")
 bbcode_enabled = true
-text = "[b]: Jump[/b]"
+text = "	[b]Jump[/b]"
+fit_content = true
 
+[node name="Arr i\'m a pirate" type="TextureRect" parent="Controls/FlowContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_twnyg")
+stretch_mode = 2
+
+[node name="Respawn" type="RichTextLabel" parent="Controls/FlowContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme = ExtResource("2_s4lrb")
+bbcode_enabled = true
+text = "[indent][b]Respawn[/b]
+Teleport to your last checkpoint"
+fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_55kwv")
+}
+
+[connection signal="pressed" from="Play Button" to="." method="pressedStart"]
 [connection signal="toggled" from="ScreenShake" to="." method="_on_screen_shake_toggled"]

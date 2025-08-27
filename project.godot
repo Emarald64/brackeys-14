@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="brackeys 14"
-run/main_scene="uid://c8325sb5uxmcb"
+run/main_scene="uid://xbprbjdai8so"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://Assets/art/icon.svg"
+config/icon="uid://b224a8y34kpbj"
 
 [autoload]
 

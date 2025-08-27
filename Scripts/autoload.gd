@@ -2,7 +2,8 @@ extends Node
 
 var player:CharacterBody2D
 var camera:Camera2D
-var cameraShake=true
+var cameraShake:=true
+var light_fade:=0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

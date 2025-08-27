@@ -14,10 +14,10 @@ variation_opentype = {
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e54dn"]
 texture = ExtResource("1_wl1kw")
-texture_margin_left = 8.0
-texture_margin_top = 8.0
-texture_margin_right = 8.0
-texture_margin_bottom = 12.0
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 13.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3yumr"]
 content_margin_top = 4.0
