@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if not animating and ((Input.is_action_pressed("jump") and not $JumpTimer.is_stopped()) or (Input.is_action_just_pressed("jump") and (not $coyoteTimer.is_stopped() or is_on_floor() or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<2500)))):
 		if not hasjumped:
-			#$AudioStreamPlayer.play()
+			$"Jump Sound".play()
 			$AnimatedSprite2D.frame=1
 		$coyoteTimer.stop()
 		if not hasjumped and (hook ==null or not hook.latched):$JumpTimer.start()
@@ -66,6 +66,7 @@ func _physics_process(delta: float) -> void:
 		if hook==null:
 			var hookPoints=$"Super Graple Point Locater 300".get_overlapping_bodies()
 			if len(hookPoints)>0:
+				$GrappleThrow.play()
 				var closestHook:Node2D
 				var closestHookDistance:=1000000.0
 				for area in hookPoints:

@@ -667,15 +667,3 @@ remote_path = NodePath("../../../Player")
 update_position = false
 update_rotation = false
 update_scale = false
-
-[connection signal="body_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@48263" to="TileMapLayer/@Area2D@48263" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@48268" to="TileMapLayer/@Area2D@48268" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@48279" to="TileMapLayer/@Area2D@48279" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@48280" to="TileMapLayer/@Area2D@48280" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@48284" to="TileMapLayer/@Area2D@48284" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@48285" to="TileMapLayer/@Area2D@48285" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@48286" to="TileMapLayer/@Area2D@48286" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@48287" to="TileMapLayer/@Area2D@48287" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@48292" to="TileMapLayer/@Area2D@48292" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@48293" to="TileMapLayer/@Area2D@48293" method="_on_body_entered"]

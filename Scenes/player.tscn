@@ -1,10 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://cwi5w06g0u40e"]
+[gd_scene load_steps=22 format=3 uid="uid://cwi5w06g0u40e"]
 
 [ext_resource type="Script" uid="uid://dlhh7vi3735i6" path="res://Scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://4w0kycqhsaw2" path="res://Assets/art/player.png" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://8td8m6signtr" path="res://Assets/art/2d_lights_and_shadows_neutral_point_light.webp" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://mr7w5tucd8j" path="res://Assets/art/eyes.png" id="4_vgqql"]
 [ext_resource type="Texture2D" uid="uid://d3vc8bc2adnuw" path="res://Assets/keyboard-&-mouse_sheet_default.png" id="5_fkybt"]
+[ext_resource type="AudioStream" uid="uid://beh68uwvyb7ha" path="res://Assets/Sounds/sfx_jump.ogg" id="6_x3wgy"]
+[ext_resource type="AudioStream" uid="uid://yy7ywi174ibc" path="res://Assets/Sounds/sfx_throw.ogg" id="7_3smsa"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qhqgy"]
 light_mode = 1
@@ -163,6 +165,14 @@ visible = false
 position = Vector2(0, -54)
 scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_tx1dd")
+
+[node name="Jump Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_x3wgy")
+volume_db = -20.0
+pitch_scale = 0.8
+
+[node name="GrappleThrow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_3smsa")
 
 [connection signal="area_entered" from="Collect" to="." method="pickup"]
 [connection signal="body_entered" from="Hurtbox" to="." method="respawn" unbinds=1]
