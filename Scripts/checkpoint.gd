@@ -1,6 +1,10 @@
 extends Node2D
 #var active = true
 
+func _process(delta: float) -> void:
+	if position.y<-2600:
+		$PointLight2D.remove_from_group("ReduceLight")
+		$PointLight2D.enabled=false
 
 func _on_body_entered(body):
 	if(body.curCP!=self):

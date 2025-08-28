@@ -517,15 +517,27 @@ repeat_times = 5
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
 texture = ExtResource("11_ikia7")
 
+[node name="ColorRect" type="ColorRect" parent="Parallax2D"]
+offset_top = 317.0
+offset_right = 1024.0
+offset_bottom = 640.0
+color = Color(0.541176, 0.690196, 0.839216, 1)
+
 [node name="Parallax2D2" type="Parallax2D" parent="."]
 z_index = -1000
 scroll_scale = Vector2(0.5, 0.5)
 scroll_offset = Vector2(0, -800)
 repeat_size = Vector2(1024, 0)
-repeat_times = 10
+repeat_times = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
 texture = ExtResource("12_7yui6")
+
+[node name="ColorRect" type="ColorRect" parent="Parallax2D2"]
+offset_top = 352.0
+offset_right = 1024.0
+offset_bottom = 825.0
+color = Color(0.180392, 0.8, 0.443137, 1)
 
 [node name="Light Change" type="Area2D" parent="."]
 position = Vector2(4747, -2102)
@@ -580,15 +592,3 @@ remote_path = NodePath("../../../Player")
 update_position = false
 update_rotation = false
 update_scale = false
-
-[connection signal="body_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@51941" to="TileMapLayer/@Area2D@51941" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@51946" to="TileMapLayer/@Area2D@51946" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@51957" to="TileMapLayer/@Area2D@51957" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@51958" to="TileMapLayer/@Area2D@51958" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@51962" to="TileMapLayer/@Area2D@51962" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@51963" to="TileMapLayer/@Area2D@51963" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@51964" to="TileMapLayer/@Area2D@51964" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@51965" to="TileMapLayer/@Area2D@51965" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@51970" to="TileMapLayer/@Area2D@51970" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@51971" to="TileMapLayer/@Area2D@51971" method="_on_body_entered"]
