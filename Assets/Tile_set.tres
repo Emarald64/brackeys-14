@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=62 format=3 uid="uid://diw8lrh8lgf52"]
+[gd_resource type="TileSet" load_steps=64 format=3 uid="uid://diw8lrh8lgf52"]
 
 [ext_resource type="Texture2D" uid="uid://ctk0jgiuyfn6v" path="res://Assets/art/spritesheet-tiles-default.png" id="1_b7a5u"]
 [ext_resource type="PackedScene" uid="uid://bl1ha2ljh62ex" path="res://Scenes/checkpoint.tscn" id="2_rq55a"]
 [ext_resource type="PackedScene" uid="uid://cm3m8ts63u2c2" path="res://Scenes/grapple_block.tscn" id="3_eg0b7"]
 [ext_resource type="PackedScene" uid="uid://cl7nl6as7rc3v" path="res://Scenes/torch.tscn" id="4_apwb6"]
+[ext_resource type="Texture2D" uid="uid://5k8duer40w5j" path="res://Assets/art/Extra_stone_tiles.png" id="5_eg0b7"]
 [ext_resource type="Texture2D" uid="uid://dbq3u768mwex0" path="res://Assets/art/extraTiles.png" id="5_rq55a"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_p4pot"]
@@ -827,6 +828,12 @@ scenes/1/scene = ExtResource("2_rq55a")
 scenes/2/scene = ExtResource("3_eg0b7")
 scenes/3/scene = ExtResource("4_apwb6")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_apwb6"]
+texture = ExtResource("5_eg0b7")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_apwb6"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -4, 32, -32, 4)
 
@@ -883,4 +890,5 @@ terrain_set_0/terrain_4/color = Color(0.28125, 0.5, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_3oaxy")
 sources/1 = SubResource("TileSetScenesCollectionSource_4i8q6")
 sources/5 = SubResource("TileSetAtlasSource_y614t")
+sources/3 = SubResource("TileSetAtlasSource_apwb6")
 tile_proxies/coords_level = [[2, Vector2i(0, 0)], [4, Vector2i(0, 0)], [2, Vector2i(1, 0)], [4, Vector2i(1, 0)], [3, Vector2i(0, 0)], [4, Vector2i(2, 0)], [3, Vector2i(1, 0)], [4, Vector2i(3, 0)], [3, Vector2i(2, 0)], [4, Vector2i(4, 0)]]
