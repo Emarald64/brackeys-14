@@ -1,11 +1,11 @@
-[gd_scene load_steps=29 format=4 uid="uid://c8325sb5uxmcb"]
+[gd_scene load_steps=31 format=4 uid="uid://c8325sb5uxmcb"]
 
 [ext_resource type="Script" uid="uid://rvci64vv5shu" path="res://Scripts/world.gd" id="1_k0juu"]
 [ext_resource type="TileSet" uid="uid://diw8lrh8lgf52" path="res://Assets/Tile_set.tres" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://cm3m8ts63u2c2" path="res://Scenes/grapple_block.tscn" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://cwi5w06g0u40e" path="res://Scenes/player.tscn" id="3_k0juu"]
 [ext_resource type="Script" uid="uid://cvquv60tgvx62" path="res://Scripts/camera_2d.gd" id="4_4mrxx"]
-[ext_resource type="PackedScene" path="res://Scenes/teleport.tscn" id="5_71j4m"]
+[ext_resource type="PackedScene" uid="uid://haxcy5mosbqj" path="res://Scenes/teleport.tscn" id="5_71j4m"]
 [ext_resource type="PackedScene" uid="uid://dkkkba2gxfy03" path="res://Scenes/GrapplePU.tscn" id="6_qfnet"]
 [ext_resource type="Texture2D" uid="uid://bnwg3gwucrtlf" path="res://Assets/art/terrain_dirt_block_center.png" id="7_i7141"]
 [ext_resource type="Texture2D" uid="uid://ctk0jgiuyfn6v" path="res://Assets/art/spritesheet-tiles-default.png" id="9_w7kh3"]
@@ -149,6 +149,23 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [-10, 0]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Camera2D")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(3.23333, 5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.5],
+"method": &"add_trauma"
+}, {
+"args": [0.5],
+"method": &"add_trauma"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_jhx03"]
@@ -388,6 +405,11 @@ filter_clip = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikia7"]
 size = Vector2(64, 44)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e0ngr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kn0ld"]
+light_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7yui6"]
 size = Vector2(1160, 672)
 
@@ -404,7 +426,7 @@ size = Vector2(243, 156)
 
 [sub_resource type="Curve2D" id="Curve2D_kn0ld"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -830, -1012, 0, 0, 0, 0, -802, -1069, -1938.54, 47.2815, 1938.54, -47.2815, 2675, -4024, 0, 0, 0, 0, 5896, -2777)
+"points": PackedVector2Array(0, 0, 0, 0, -830, -1012, 0, 0, 0, 0, -802, -1069, -1938.54, 47.2815, 1938.54, -47.2815, 2832, -4387, 0, 0, 0, 0, 5896, -2777)
 }
 point_count = 4
 
@@ -430,7 +452,7 @@ update_rotation = false
 update_scale = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-599, -38)
+position = Vector2(5874.02, -2807.82)
 zoom = Vector2(0.75, 0.75)
 limit_smoothed = true
 drag_horizontal_enabled = true
@@ -578,15 +600,18 @@ tile_set = ExtResource("1_nnsk1")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 z_index = -1001
+material = SubResource("CanvasItemMaterial_e0ngr")
 scroll_scale = Vector2(0.25, 0.25)
 scroll_offset = Vector2(0, -250)
 repeat_size = Vector2(1024, 0)
 repeat_times = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+material = SubResource("CanvasItemMaterial_kn0ld")
 texture = ExtResource("11_ikia7")
 
 [node name="ColorRect" type="ColorRect" parent="Parallax2D"]
+material = SubResource("CanvasItemMaterial_kn0ld")
 offset_top = 317.0
 offset_right = 1024.0
 offset_bottom = 640.0
@@ -594,15 +619,18 @@ color = Color(0.541176, 0.690196, 0.839216, 1)
 
 [node name="Parallax2D2" type="Parallax2D" parent="."]
 z_index = -1000
+material = SubResource("CanvasItemMaterial_e0ngr")
 scroll_scale = Vector2(0.5, 0.5)
 scroll_offset = Vector2(0, -800)
 repeat_size = Vector2(1024, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
+material = SubResource("CanvasItemMaterial_kn0ld")
 texture = ExtResource("12_7yui6")
 
 [node name="ColorRect" type="ColorRect" parent="Parallax2D2"]
+material = SubResource("CanvasItemMaterial_kn0ld")
 offset_top = 352.0
 offset_right = 1024.0
 offset_bottom = 1377.0
@@ -669,14 +697,19 @@ update_position = false
 update_rotation = false
 update_scale = false
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(4624, -3230)
+energy = 0.5
+shadow_enabled = true
+
 [connection signal="body_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@131008" to="TileMapLayer/@Area2D@131008" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@131013" to="TileMapLayer/@Area2D@131013" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@131024" to="TileMapLayer/@Area2D@131024" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@131025" to="TileMapLayer/@Area2D@131025" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@131029" to="TileMapLayer/@Area2D@131029" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@131030" to="TileMapLayer/@Area2D@131030" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@131031" to="TileMapLayer/@Area2D@131031" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@131032" to="TileMapLayer/@Area2D@131032" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@131037" to="TileMapLayer/@Area2D@131037" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@131038" to="TileMapLayer/@Area2D@131038" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@69966" to="TileMapLayer/@Area2D@69966" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@69971" to="TileMapLayer/@Area2D@69971" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@69982" to="TileMapLayer/@Area2D@69982" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@69983" to="TileMapLayer/@Area2D@69983" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@69987" to="TileMapLayer/@Area2D@69987" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@69988" to="TileMapLayer/@Area2D@69988" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@69989" to="TileMapLayer/@Area2D@69989" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@69990" to="TileMapLayer/@Area2D@69990" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@69995" to="TileMapLayer/@Area2D@69995" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@69996" to="TileMapLayer/@Area2D@69996" method="_on_body_entered"]

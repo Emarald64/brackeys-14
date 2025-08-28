@@ -120,4 +120,6 @@ func updateLight():
 	get_node("../CanvasModulate").color=(Color(0.392,0.392,0.392) if dark else Color(1,1,1))
 	$PointLight2D.enabled=dark
 	$PointLight2D.texture_scale=(1.5 if dark else 0.0)
+	get_node("../DirectionalLight2D").enabled=dark
+	get_node("../DirectionalLight2D").energy=(0.5 if dark else 0.0)
 	get_tree().set_group("ReduceLight","enabled",dark)
