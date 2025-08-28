@@ -4,12 +4,12 @@ extends CharacterBody2D
 const SPEED = 500.0
 const JUMP_VELOCITY = -750.0
 const hookScene=preload("res://Scenes/grapple.tscn")
-var hasjumped=false
-var started_timer=false
-var hook:Area2D=null
+var hasjumped:=false
+var started_timer:=false
+var hook:Area2D
 var deathCount=0
 @export var animating:=false
-@export var canGrapple=true
+@export var canGrapple:=false
 
 func _ready():
 	Autoload.player=self
@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.frame=1
 		$coyoteTimer.stop()
 		if not hasjumped and (hook ==null or not hook.latched):$JumpTimer.start()
-		var delta_y=JUMP_VELOCITY*((0.5 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump") else 0.0) + (delta*5))
+		var delta_y:=JUMP_VELOCITY*((0.5 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump") else 0.0) + (delta*5))
 		#print("jump velocity:",delta_y)
 		velocity.y+= delta_y
 		#print(velocity.y)
@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 			var hookPoints=$"Super Graple Point Locater 300".get_overlapping_bodies()
 			if len(hookPoints)>0:
 				var closestHook:Node2D
-				var closestHookDistance=100000000000000000
+				var closestHookDistance:=1000000.0
 				for area in hookPoints:
 					var distance=position.distance_squared_to(area.global_position)
 					if closestHookDistance>distance:
