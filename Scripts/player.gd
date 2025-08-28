@@ -8,7 +8,7 @@ var hasjumped=false
 var started_timer=false
 var hook:Area2D=null
 var deathCount=0
-var animating:=false
+@export var animating:=false
 @export var canGrapple=true
 
 func _ready():
@@ -41,11 +41,14 @@ func _physics_process(delta: float) -> void:
 		hasjumped=false
 		started_timer=false
 		$coyoteTimer.stop()
-	
-	if Input.is_action_just_pressed("jump") and $Collect.has_overlapping_areas() and $Collect.get_overlapping_areas()[0].has_meta("animation"):
-		get_node("../AnimationPlayer").play($Collect.get_overlapping_areas()[0].get_meta("animation"))
+	if not animating and$Collect.has_overlapping_areas() and $Collect.get_overlapping_areas()[0].has_meta("animation"):
+		$"Interact Prompt".show()
+		if Input.is_action_just_pressed("jump"):
+			get_node("../AnimationPlayer").play($Collect.get_overlapping_areas()[0].get_meta("animation"))
+	else:$"Interact Prompt".hide()
+			
 	# Handle jump.
-	elif not animating and ((Input.is_action_pressed("jump") and not $JumpTimer.is_stopped()) or (Input.is_action_just_pressed("jump") and (not $coyoteTimer.is_stopped() or is_on_floor() or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<2500)))):
+	if not animating and ((Input.is_action_pressed("jump") and not $JumpTimer.is_stopped()) or (Input.is_action_just_pressed("jump") and (not $coyoteTimer.is_stopped() or is_on_floor() or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<2500)))):
 		if not hasjumped:
 			#$AudioStreamPlayer.play()
 			$AnimatedSprite2D.frame=1
@@ -86,7 +89,7 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	velocity.y+=Input.get_axis("move_up", "move_down")*200*delta
+	if not is_on_floor():velocity.y+=Input.get_axis("move_up", "move_down")*200*delta
 	var direction := Input.get_axis("move_left", "move_right")
 	velocity.x= lerp(velocity.x,direction*SPEED,(15 if is_on_floor() else 5) * delta)
 
@@ -102,12 +105,13 @@ func respawn():
 	updateLight()
 
 func pickup(area: Area2D) -> void:
-	if area.get_meta("pickupType",'')=="grapple":
-		canGrapple=true
-		area.queue_free()
-		print("grapple pickup")
-		Autoload.camera.add_trauma(0.5)
-		get_node("../AnimationPlayer").play("Show tutorial sign 2")
+	match area.get_meta("pickupType",''):
+		"grapple":
+			canGrapple=true
+			area.queue_free()
+			print("grapple pickup")
+			Autoload.camera.add_trauma(0.5)
+			get_node("../AnimationPlayer").play("Show tutorial sign 2")
 
 func updateLight():
 	$"Dark Detect".force_raycast_update()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://cwi5w06g0u40e"]
+[gd_scene load_steps=20 format=3 uid="uid://cwi5w06g0u40e"]
 
 [ext_resource type="Script" uid="uid://dlhh7vi3735i6" path="res://Scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://4w0kycqhsaw2" path="res://Assets/art/player.png" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://8td8m6signtr" path="res://Assets/art/2d_lights_and_shadows_neutral_point_light.webp" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://mr7w5tucd8j" path="res://Assets/art/eyes.png" id="4_vgqql"]
+[ext_resource type="Texture2D" uid="uid://d3vc8bc2adnuw" path="res://Assets/keyboard-&-mouse_sheet_default.png" id="5_fkybt"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qhqgy"]
 light_mode = 1
@@ -81,6 +82,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
+atlas = ExtResource("5_fkybt")
+region = Rect2(328, 200, 48, 48)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 33
@@ -153,6 +158,12 @@ collision_mask = 64
 hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Interact Prompt" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -54)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_tx1dd")
 
 [connection signal="area_entered" from="Collect" to="." method="pickup"]
 [connection signal="body_entered" from="Hurtbox" to="." method="respawn" unbinds=1]

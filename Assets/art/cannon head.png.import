@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvdfg18xspam"
-path="res://.godot/imported/28.png-0a580f72810cb15d13991ced7559cce5.ctex"
+uid="uid://8d67oivnqsdr"
+path="res://.godot/imported/cannon head.png-835796dc740c0da6163251aafb1edac0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/art/28.png"
-dest_files=["res://.godot/imported/28.png-0a580f72810cb15d13991ced7559cce5.ctex"]
+source_file="res://Assets/art/cannon head.png"
+dest_files=["res://.godot/imported/cannon head.png-835796dc740c0da6163251aafb1edac0.ctex"]
 
 [params]
 

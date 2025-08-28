@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://c8325sb5uxmcb"]
+[gd_scene load_steps=29 format=4 uid="uid://c8325sb5uxmcb"]
 
 [ext_resource type="Script" uid="uid://rvci64vv5shu" path="res://Scripts/world.gd" id="1_k0juu"]
 [ext_resource type="TileSet" uid="uid://diw8lrh8lgf52" path="res://Assets/Tile_set.tres" id="1_nnsk1"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cep0k6ibhhni8" path="res://Assets/art/background/trees_Layer 1.png" id="11_ikia7"]
 [ext_resource type="Texture2D" uid="uid://j55o7n61qpk2" path="res://Assets/art/background/trees_Layer 2.png" id="12_7yui6"]
 [ext_resource type="Texture2D" uid="uid://dsr5ng3pomk52" path="res://Assets/art/10.png" id="13_e0ngr"]
-[ext_resource type="Texture2D" uid="uid://cvdfg18xspam" path="res://Assets/art/28.png" id="14_kn0ld"]
+[ext_resource type="Texture2D" uid="uid://8d67oivnqsdr" path="res://Assets/art/cannon head.png" id="14_e0ngr"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qfnet"]
 
@@ -30,9 +30,9 @@ tracks/0/path = NodePath("Cannon/Cannon Head:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -1.309, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -1.1401, -0.25, 0, 0.25, 0, -1.1401, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 3.5, 4.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -64,7 +64,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.0165, -0.25, 0, 0.25, 0, 0.0165, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.00621697, -0.25, 0, 0.25, 0, 0.00621697, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(1.5, 2.5, 3.23333, 5)
 }
 tracks/4/type = "value"
@@ -126,9 +126,32 @@ tracks/8/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(5)
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Player:animating")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Player:z_index")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 4.51),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-10, 0]
+}
 
 [sub_resource type="Animation" id="Animation_jhx03"]
-length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -268,6 +291,42 @@ tracks/11/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Player:animating")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Player:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-599, -38)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Player:z_index")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_q5onr"]
 resource_name = "Show tutorial sign 2"
@@ -332,12 +391,20 @@ size = Vector2(64, 44)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7yui6"]
 size = Vector2(1160, 672)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kn0ld"]
+atlas = ExtResource("14_e0ngr")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgpy0"]
+atlas = ExtResource("14_e0ngr")
+region = Rect2(64, 0, 16, 32)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0ngr"]
 size = Vector2(243, 156)
 
 [sub_resource type="Curve2D" id="Curve2D_kn0ld"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -851, -939, 0, 0, 0, 0, -820, -1076, -1938.54, 47.2815, 1938.54, -47.2815, 2699, -5151, 0, 0, 0, 0, 5896, -2777)
+"points": PackedVector2Array(0, 0, 0, 0, -830, -1012, 0, 0, 0, 0, -802, -1069, -1938.54, 47.2815, 1938.54, -47.2815, 2675, -4024, 0, 0, 0, 0, 5896, -2777)
 }
 point_count = 4
 
@@ -351,9 +418,10 @@ tile_set = ExtResource("1_nnsk1")
 
 [node name="Player" parent="." node_paths=PackedStringArray("curCP") instance=ExtResource("3_k0juu")]
 material = SubResource("CanvasItemMaterial_qfnet")
-position = Vector2(-598, -43)
+position = Vector2(-599, -38)
 floor_max_angle = 0.523599
 curCP = NodePath("../Spawnpoint")
+animating = null
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
@@ -361,7 +429,7 @@ update_rotation = false
 update_scale = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-598, -43)
+position = Vector2(4436.69, -3695.98)
 zoom = Vector2(0.75, 0.75)
 limit_smoothed = true
 drag_horizontal_enabled = true
@@ -528,7 +596,7 @@ z_index = -1000
 scroll_scale = Vector2(0.5, 0.5)
 scroll_offset = Vector2(0, -800)
 repeat_size = Vector2(1024, 0)
-repeat_times = 5
+repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
 texture = ExtResource("12_7yui6")
@@ -536,7 +604,7 @@ texture = ExtResource("12_7yui6")
 [node name="ColorRect" type="ColorRect" parent="Parallax2D2"]
 offset_top = 352.0
 offset_right = 1024.0
-offset_bottom = 825.0
+offset_bottom = 1377.0
 color = Color(0.180392, 0.8, 0.443137, 1)
 
 [node name="Light Change" type="Area2D" parent="."]
@@ -549,7 +617,8 @@ position = Vector2(1, -159)
 shape = SubResource("RectangleShape2D_7yui6")
 
 [node name="Cannon" type="Area2D" parent="."]
-z_index = -10
+z_index = -9
+texture_filter = 1
 position = Vector2(-843, -999)
 collision_layer = 8
 collision_mask = 0
@@ -564,8 +633,13 @@ offset = Vector2(-7.27274, 54.9091)
 [node name="Cannon Head" type="Sprite2D" parent="Cannon"]
 position = Vector2(-24, 27)
 scale = Vector2(-2.75, 2.75)
-texture = ExtResource("14_kn0ld")
+texture = SubResource("AtlasTexture_kn0ld")
 offset = Vector2(-16.901, 0.143585)
+
+[node name="Cannon back" type="Sprite2D" parent="Cannon/Cannon Head"]
+z_index = -2
+position = Vector2(-40.727, 0.145)
+texture = SubResource("AtlasTexture_hgpy0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cannon"]
 position = Vector2(11, 29)
@@ -578,17 +652,29 @@ collision_mask = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dark Zone"]
 position = Vector2(4902, -1020)
 scale = Vector2(2, 2)
-polygon = PackedVector2Array(-2904.5, 262, -2886.5, 571, 1161, 605.5, 1132, -685, 14, -609.5, -187.5, -612, -2281, -72.5)
+polygon = PackedVector2Array(-3018.5, 532.5, 1161, 605.5, 884, -310.5, -187.5, -612)
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_kn0ld")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-851, -939)
-rotation = -1.34827
+position = Vector2(-830, -1012)
+rotation = -1.11419
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
 remote_path = NodePath("../../../Player")
 update_position = false
 update_rotation = false
 update_scale = false
+
+[connection signal="body_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@40193" to="TileMapLayer/@Area2D@40193" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@40198" to="TileMapLayer/@Area2D@40198" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@40209" to="TileMapLayer/@Area2D@40209" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@40210" to="TileMapLayer/@Area2D@40210" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@40214" to="TileMapLayer/@Area2D@40214" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@40215" to="TileMapLayer/@Area2D@40215" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@40216" to="TileMapLayer/@Area2D@40216" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@40217" to="TileMapLayer/@Area2D@40217" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@40222" to="TileMapLayer/@Area2D@40222" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@40223" to="TileMapLayer/@Area2D@40223" method="_on_body_entered"]
