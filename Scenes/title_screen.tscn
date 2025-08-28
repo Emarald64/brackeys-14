@@ -130,23 +130,6 @@ pivot_offset = Vector2(57, 34.875)
 theme = ExtResource("2_s4lrb")
 text = "Play"
 
-[node name="ScreenShake" type="CheckButton" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 258.0
-offset_top = -136.0
-offset_right = 520.0
-offset_bottom = -40.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_s4lrb")
-text = "Disable Screen Shake"
-autowrap_mode = 2
-
 [node name="Title Container" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -249,12 +232,12 @@ text = "[indent][b]Respawn[/b]
 Teleport to your last checkpoint"
 fit_content = true
 
-[node name="TextureRect" type="TextureRect" parent="Controls/FlowContainer"]
+[node name="Shift" type="TextureRect" parent="Controls/FlowContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_6vd4x")
 stretch_mode = 2
 
-[node name="Respawn2" type="RichTextLabel" parent="Controls/FlowContainer"]
+[node name="Grapple" type="RichTextLabel" parent="Controls/FlowContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme = ExtResource("2_s4lrb")
@@ -275,5 +258,24 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
+[node name="Options" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 846.0
+offset_top = 448.0
+offset_right = 1128.0
+offset_bottom = 628.0
+
+[node name="ScreenShake" type="CheckButton" parent="Options"]
+layout_mode = 2
+theme = ExtResource("2_s4lrb")
+text = "Disable Screen Shake"
+autowrap_mode = 2
+
+[node name="Mute" type="CheckButton" parent="Options"]
+layout_mode = 2
+theme = ExtResource("2_s4lrb")
+text = "Mute"
+
 [connection signal="pressed" from="Play Button" to="." method="pressedStart"]
-[connection signal="toggled" from="ScreenShake" to="." method="_on_screen_shake_toggled"]
+[connection signal="toggled" from="Options/ScreenShake" to="." method="_on_screen_shake_toggled"]
+[connection signal="toggled" from="Options/Mute" to="." method="_on_mute_toggled"]

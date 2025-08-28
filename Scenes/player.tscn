@@ -173,6 +173,7 @@ pitch_scale = 0.8
 
 [node name="GrappleThrow" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_3smsa")
+volume_db = -20.0
 
 [connection signal="area_entered" from="Collect" to="." method="pickup"]
 [connection signal="body_entered" from="Hurtbox" to="." method="respawn" unbinds=1]

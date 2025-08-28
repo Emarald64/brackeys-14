@@ -15,3 +15,6 @@ func pressedStart() -> void:
 
 func changeScene() -> void:
 	print(get_tree().change_scene_to_packed(sceneToTransition))
+
+func _on_mute_toggled(toggled_on: bool) -> void:
+	Autoload.mute=toggled_on

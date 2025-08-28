@@ -3,6 +3,7 @@ extends Node
 var player:CharacterBody2D
 var camera:Camera2D
 var cameraShake:=true
+var mute:=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
