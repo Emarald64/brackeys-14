@@ -8,6 +8,7 @@ var hasjumped=false
 var started_timer=false
 var hook:Area2D=null
 var deathCount=0
+var animating:=false
 @export var canGrapple=true
 
 func _ready():
@@ -25,7 +26,7 @@ func _process(_delta: float) -> void:
 		$"Line2D".hide()
  
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("reset"):
+	if Input.is_action_just_pressed("reset") and not animating:
 		respawn()
 	
 	# Add the gravity.
@@ -40,8 +41,11 @@ func _physics_process(delta: float) -> void:
 		hasjumped=false
 		started_timer=false
 		$coyoteTimer.stop()
+	
+	if Input.is_action_just_pressed("jump") and $Collect.has_overlapping_areas() and $Collect.get_overlapping_areas()[0].has_meta("animation"):
+		get_node("../AnimationPlayer").play($Collect.get_overlapping_areas()[0].get_meta("animation"))
 	# Handle jump.
-	if ((Input.is_action_pressed("jump") and not $JumpTimer.is_stopped()) or (Input.is_action_just_pressed("jump") and (not $coyoteTimer.is_stopped() or is_on_floor() or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<2500)))):
+	elif not animating and ((Input.is_action_pressed("jump") and not $JumpTimer.is_stopped()) or (Input.is_action_just_pressed("jump") and (not $coyoteTimer.is_stopped() or is_on_floor() or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<2500)))):
 		if not hasjumped:
 			#$AudioStreamPlayer.play()
 			$AnimatedSprite2D.frame=1
@@ -95,14 +99,7 @@ func respawn():
 	if hook !=null:hook.queue_free()
 	position=curCP.position
 	Autoload.camera.add_trauma(0.3)
-	await get_tree().physics_frame
-	var dark= $Collect.overlaps_area(get_node("../Dark Zone"))
-	
-	print(dark)
-	get_node("../CanvasModulate").color=(Color(0.392,0.392,0.392) if dark else Color(1,1,1))
-	$PointLight2D.enabled=dark
-	$PointLight2D.texture_scale=(1.5 if dark else 0)
-	get_tree().set_group("ReduceLight","enabled",dark)
+	updateLight()
 
 func pickup(area: Area2D) -> void:
 	if area.get_meta("pickupType",'')=="grapple":
@@ -111,3 +108,11 @@ func pickup(area: Area2D) -> void:
 		print("grapple pickup")
 		Autoload.camera.add_trauma(0.5)
 		get_node("../AnimationPlayer").play("Show tutorial sign 2")
+
+func updateLight():
+	$"Dark Detect".force_raycast_update()
+	var dark=$"Dark Detect".is_colliding()
+	get_node("../CanvasModulate").color=(Color(0.392,0.392,0.392) if dark else Color(1,1,1))
+	$PointLight2D.enabled=dark
+	$PointLight2D.texture_scale=(1.5 if dark else 0.0)
+	get_tree().set_group("ReduceLight","enabled",dark)
