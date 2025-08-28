@@ -19,11 +19,11 @@ func _physics_process(delta: float) -> void:
 		if player.velocity.length_squared()>640000:
 			player.velocity/=(player.velocity.length()/800)
 		#print(player.velocity.length())
-		if offset.length_squared()>90000:
+		if offset.length_squared()>122500:
 			retracting=true
 			latched=false
 	else:
-		if offset.length_squared()>40000:retracting=true
+		if offset.length_squared()>62500:retracting=true
 		if retracting:
 			if offset.length_squared()<1200:queue_free()
 			else:velocity=2000*offset/offset.length()
