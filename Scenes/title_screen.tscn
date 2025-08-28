@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xbprbjdai8so"]
+[gd_scene load_steps=14 format=3 uid="uid://xbprbjdai8so"]
 
 [ext_resource type="Script" uid="uid://c3smpdvnjq6dt" path="res://Scripts/title_screen.gd" id="1_sa3yf"]
 [ext_resource type="Material" uid="uid://dssl1f22j2288" path="res://Assets/new_shader_material.tres" id="1_twnyg"]
@@ -23,6 +23,10 @@ region = Rect2(328, 200, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_twnyg"]
 atlas = ExtResource("3_4gxqj")
 region = Rect2(328, 264, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vd4x"]
+atlas = ExtResource("3_4gxqj")
+region = Rect2(840, 264, 48, 48)
 
 [sub_resource type="Animation" id="Animation_4gxqj"]
 resource_name = "Fade Out"
@@ -171,7 +175,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -316.0
+offset_top = -435.0
 offset_right = -878.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -221,7 +225,7 @@ scroll_active = false
 [node name="Space" type="TextureRect" parent="Controls/FlowContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_12m1t")
-stretch_mode = 2
+stretch_mode = 3
 
 [node name="Jump" type="RichTextLabel" parent="Controls/FlowContainer"]
 custom_minimum_size = Vector2(120, 0)
@@ -243,6 +247,21 @@ theme = ExtResource("2_s4lrb")
 bbcode_enabled = true
 text = "[indent][b]Respawn[/b]
 Teleport to your last checkpoint"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="Controls/FlowContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6vd4x")
+stretch_mode = 2
+
+[node name="Respawn2" type="RichTextLabel" parent="Controls/FlowContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme = ExtResource("2_s4lrb")
+bbcode_enabled = true
+text = "[indent][b]Grapple[/b]
+After getting the grappling hook
+"
 fit_content = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
