@@ -7,7 +7,6 @@ func _process(delta: float) -> void:
 	if $"Light Change".has_overlapping_bodies():
 		var value=max(min((-1687.8947-Autoload.player.position.y)*0.0011875,1.0),0.392)
 		$CanvasModulate.color=Color(value,value,value)
-		print((2530+Autoload.player.position.y)/1024)
 		$DirectionalLight2D.energy=max(min((2530+Autoload.player.position.y)/1024,0.5),0.0)
 		$DirectionalLight2D.enabled=Autoload.player.position.y>-2530
 		Autoload.player.get_node("PointLight2D").enabled=Autoload.player.position.y>-2530
