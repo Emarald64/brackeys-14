@@ -53,7 +53,7 @@ color = Color(1, 0, 0, 1)
 hue_variation_min = -2.23517e-08
 hue_variation_max = 1.0
 
-[node name="Checkpoint" type="Area2D"]
+[node name="Checkpoint" type="Area2D" groups=["Checkpoints"]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_lbcco")

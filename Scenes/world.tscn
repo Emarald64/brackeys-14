@@ -429,7 +429,7 @@ update_rotation = false
 update_scale = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(4436.69, -3695.98)
+position = Vector2(-599, -38)
 zoom = Vector2(0.75, 0.75)
 limit_smoothed = true
 drag_horizontal_enabled = true
@@ -549,7 +549,7 @@ texture_repeat = 2
 position = Vector2(4902, -1020)
 scale = Vector2(2, 2)
 texture = ExtResource("7_i7141")
-polygon = PackedVector2Array(-2904.5, 262, -2886.5, 571, 1161, 605.5, 1132, -685, 14, -609.5, 0, -604, -15, -612.5, -32, -604.5, -49, -612, -64, -604.5, -79.5, -611.5, -96.5, -605, -112, -611.5, -128.5, -605, -143.5, -612, -160, -605, -175, -612, -187.5, -612, -2281, -72.5, -2543.5, 29, -2575.5, 96)
+polygon = PackedVector2Array(-2820.5, 541.5, 1161, 605.5, 1132, -685, 14, -609.5, 0, -604, -15, -612.5, -32, -604.5, -49, -612, -64, -604.5, -79.5, -611.5, -96.5, -605, -112, -611.5, -128.5, -605, -143.5, -612, -160, -605, -175, -612, -187.5, -612, -2543.5, 29, -2575.5, 96)
 
 [node name="Tutorial Sign 2" type="Sprite2D" parent="."]
 z_index = -1
@@ -646,6 +646,7 @@ position = Vector2(11, 29)
 shape = SubResource("RectangleShape2D_e0ngr")
 
 [node name="Dark Zone" type="Area2D" parent="."]
+visible = false
 collision_layer = 64
 collision_mask = 0
 
@@ -666,15 +667,3 @@ remote_path = NodePath("../../../Player")
 update_position = false
 update_rotation = false
 update_scale = false
-
-[connection signal="body_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@40193" to="TileMapLayer/@Area2D@40193" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@40198" to="TileMapLayer/@Area2D@40198" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@40209" to="TileMapLayer/@Area2D@40209" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@40210" to="TileMapLayer/@Area2D@40210" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@40214" to="TileMapLayer/@Area2D@40214" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@40215" to="TileMapLayer/@Area2D@40215" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@40216" to="TileMapLayer/@Area2D@40216" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@40217" to="TileMapLayer/@Area2D@40217" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@40222" to="TileMapLayer/@Area2D@40222" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@40223" to="TileMapLayer/@Area2D@40223" method="_on_body_entered"]

@@ -11,10 +11,14 @@ func _on_body_entered(body):
 		body.curCP = self
 		#active = false
 		print('checkpoint')
+		get_tree().call_group("Checkpoints","dropFlag")
 		$AnimatedSprite2D.play("Up")
 		$GPUParticles2D.emitting=true
 		$PointLight2D.texture_scale=1.5
 		Autoload.camera.add_trauma(0.3)
 	# Replace with function body.
  
+func dropFlag():
+	$AnimatedSprite2D.play("Down")
+	$PointLight2D.texture_scale=0.5
  
