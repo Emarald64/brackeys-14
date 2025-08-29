@@ -1,7 +1,7 @@
 extends Node2D
 #var active = true
 
-func _process(delta: float) -> void:
+func _ready() -> void:
 	if position.y<-2600:
 		$PointLight2D.remove_from_group("ReduceLight")
 		$PointLight2D.enabled=false

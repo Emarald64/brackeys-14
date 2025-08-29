@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 		$coyoteTimer.stop()
 		if not hasjumped and (hook ==null or not hook.latched):$JumpTimer.start()
 		var delta_y:=JUMP_VELOCITY*((1.0 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump") else 0.0) + (delta*10))
-		print("jump velocity:",delta_y,"frame:",Engine.get_physics_frames(),"onfloor:",is_on_floor())
+		#print("jump velocity:",delta_y,"frame:",Engine.get_physics_frames(),"onfloor:",is_on_floor())
 		velocity.y+= delta_y
 		#print(velocity.y)
 		if(hook!=null and hook.latched and position.distance_squared_to(hook.position)<2500):
