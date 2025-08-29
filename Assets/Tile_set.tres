@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=64 format=3 uid="uid://diw8lrh8lgf52"]
+[gd_resource type="TileSet" load_steps=65 format=3 uid="uid://diw8lrh8lgf52"]
 
 [ext_resource type="Texture2D" uid="uid://ctk0jgiuyfn6v" path="res://Assets/art/spritesheet-tiles-default.png" id="1_b7a5u"]
 [ext_resource type="PackedScene" uid="uid://bl1ha2ljh62ex" path="res://Scenes/checkpoint.tscn" id="2_rq55a"]
@@ -828,11 +828,18 @@ scenes/1/scene = ExtResource("2_rq55a")
 scenes/2/scene = ExtResource("3_eg0b7")
 scenes/3/scene = ExtResource("4_apwb6")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y614t"]
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_apwb6"]
 texture = ExtResource("5_eg0b7")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_y614t")
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:0/0 = 0
+1:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_y614t")
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_apwb6"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -4, 32, -32, 4)

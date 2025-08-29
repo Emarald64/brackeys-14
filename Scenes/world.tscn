@@ -712,3 +712,15 @@ strength = 3000.0
 
 [node name="Spring2" parent="." instance=ExtResource("15_kn0ld")]
 position = Vector2(6752, -3232)
+
+[connection signal="body_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@55340" to="TileMapLayer/@Area2D@55340" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@55345" to="TileMapLayer/@Area2D@55345" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@55356" to="TileMapLayer/@Area2D@55356" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@55357" to="TileMapLayer/@Area2D@55357" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@55361" to="TileMapLayer/@Area2D@55361" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@55362" to="TileMapLayer/@Area2D@55362" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@55363" to="TileMapLayer/@Area2D@55363" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@55368" to="TileMapLayer/@Area2D@55368" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@55369" to="TileMapLayer/@Area2D@55369" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@55371" to="TileMapLayer/@Area2D@55371" method="_on_body_entered"]
