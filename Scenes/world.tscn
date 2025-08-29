@@ -37,7 +37,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("Cannon/Cannon Head:position:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -48,7 +48,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("Cannon/Cannon Head:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -64,9 +64,9 @@ tracks/3/path = NodePath("Path2D/PathFollow2D:progress_ratio")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.00621697, -0.25, 0, 0.25, 0, 0.00621697, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(1.5, 2.5, 3.23333, 5)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.00621697, -0.25, 0, 0.25, 0, 0.00621697, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(-2.4, 1.5, 2.5, 3.23333, 5)
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -75,7 +75,7 @@ tracks/4/path = NodePath("Path2D/PathFollow2D/RemoteTransform2D:update_position"
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0.733333, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -87,7 +87,7 @@ tracks/5/path = NodePath("Path2D/PathFollow2D/RemoteTransform2D:update_rotation"
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0.733333, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -99,7 +99,7 @@ tracks/6/path = NodePath("Path2D/PathFollow2D/RemoteTransform2D:update_scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0.733333, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -225,7 +225,7 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-24, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-9, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/5/type = "bezier"
@@ -236,7 +236,7 @@ tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(27, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(33, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/6/type = "bezier"
@@ -454,7 +454,7 @@ update_rotation = false
 update_scale = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-599, -38)
+position = Vector2(-830, -1012)
 zoom = Vector2(0.75, 0.75)
 limit_smoothed = true
 drag_horizontal_enabled = true
@@ -662,7 +662,7 @@ texture = ExtResource("13_e0ngr")
 offset = Vector2(-7.27274, 54.9091)
 
 [node name="Cannon Head" type="Sprite2D" parent="Cannon"]
-position = Vector2(-24, 27)
+position = Vector2(-9, 33)
 scale = Vector2(-2.75, 2.75)
 texture = SubResource("AtlasTexture_kn0ld")
 offset = Vector2(-16.901, 0.143585)
@@ -712,15 +712,3 @@ strength = 3000.0
 
 [node name="Spring2" parent="." instance=ExtResource("15_kn0ld")]
 position = Vector2(6752, -3232)
-
-[connection signal="body_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@55340" to="TileMapLayer/@Area2D@55340" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@55345" to="TileMapLayer/@Area2D@55345" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@55356" to="TileMapLayer/@Area2D@55356" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@55357" to="TileMapLayer/@Area2D@55357" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@55361" to="TileMapLayer/@Area2D@55361" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@55362" to="TileMapLayer/@Area2D@55362" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@55363" to="TileMapLayer/@Area2D@55363" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@55368" to="TileMapLayer/@Area2D@55368" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@55369" to="TileMapLayer/@Area2D@55369" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@55371" to="TileMapLayer/@Area2D@55371" method="_on_body_entered"]
