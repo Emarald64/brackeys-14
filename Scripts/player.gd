@@ -8,6 +8,7 @@ var hasjumped:=false
 var started_timer:=false
 var hook:Area2D
 var deathCount=0
+var springFrame:=false
 @export var animating:=false
 @export var canGrapple:=false
 
@@ -33,10 +34,10 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		if $AnimatedSprite2D.frame==0 or not $JumpTimer.is_stopped():$AnimatedSprite2D.frame=2
 		velocity += get_gravity() * delta * (0.8 if hook != null and hook.latched else 1.0)
-		if not started_timer:
+		if not started_timer and not springFrame:
 			$coyoteTimer.start()
 			started_timer=true
-	else:
+	elif not springFrame:
 		$AnimatedSprite2D.frame=0
 		hasjumped=false
 		started_timer=false
@@ -54,9 +55,9 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.frame=1
 		$coyoteTimer.stop()
 		if not hasjumped and (hook ==null or not hook.latched):$JumpTimer.start()
-		if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump"):
-			velocity.y=min(JUMP_VELOCITY,velocity.y)
-		velocity.y+=JUMP_VELOCITY*delta*10
+		var delta_y:=JUMP_VELOCITY*((1.0 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump") else 0.0) + (delta*10))
+		print("jump velocity:",delta_y,"frame:",Engine.get_physics_frames(),"onfloor:",is_on_floor())
+		velocity.y+= delta_y
 		#print(velocity.y)
 		if(hook!=null and hook.latched and position.distance_squared_to(hook.position)<2500):
 			hook.retract() 
@@ -95,6 +96,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x= lerp(velocity.x,direction*SPEED,(15 if is_on_floor() else 5) * delta)
 
 	move_and_slide()
+	springFrame=false
 
 func respawn():
 	deathCount+=1
