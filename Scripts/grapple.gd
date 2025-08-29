@@ -13,8 +13,8 @@ var latchLocation:Vector2
 func _physics_process(delta: float) -> void:
 	var offset=player.position-position
 	if latched and offset.length_squared()>0:
-		var pull=(min(max((offset+player.velocity+(player.get_gravity()*delta)).length()-offset.length(),0)+3500,4500))
-		#print("grapple pull:",pull)
+		var pull=(min(max((offset+player.velocity).length()-offset.length(),0)+3500,4000))
+		print("grapple pull:",pull)
 		player.velocity=player.velocity-(delta*offset/offset.length()*pull)
 		if player.velocity.length_squared()>640000:
 			player.velocity/=(player.velocity.length()/800)

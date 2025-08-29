@@ -3,24 +3,24 @@
 [ext_resource type="Texture2D" uid="uid://ctk0jgiuyfn6v" path="res://Assets/art/spritesheet-tiles-default.png" id="1_nv7ci"]
 [ext_resource type="Script" uid="uid://c1jip3pgh1cq5" path="res://Scripts/spring.gd" id="1_ynq0b"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ynq0b"]
-atlas = ExtResource("1_nv7ci")
-region = Rect2(640, 448, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_1w5vy"]
 atlas = ExtResource("1_nv7ci")
 region = Rect2(640, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynq0b"]
+atlas = ExtResource("1_nv7ci")
+region = Rect2(640, 448, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7tg8b"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ynq0b")
+"texture": SubResource("AtlasTexture_1w5vy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1w5vy")
+"texture": SubResource("AtlasTexture_ynq0b")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -36,7 +36,11 @@ script = ExtResource("1_ynq0b")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_7tg8b")
+autoplay = "default"
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_77tl1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

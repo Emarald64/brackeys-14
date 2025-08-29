@@ -154,13 +154,11 @@ vertical_alignment = 1
 [node name="Controls" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -435.0
-offset_right = -878.0
-grow_horizontal = 2
+offset_right = 264.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_twnyg")
 
@@ -259,11 +257,18 @@ offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="Options" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 846.0
-offset_top = 448.0
-offset_right = 1128.0
-offset_bottom = 628.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -311.0
+offset_top = -214.0
+offset_right = -29.0
+offset_bottom = -34.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="ScreenShake" type="CheckButton" parent="Options"]
 layout_mode = 2

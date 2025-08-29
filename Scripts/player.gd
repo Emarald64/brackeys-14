@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var curCP:Node2D
 const SPEED = 500.0
-const JUMP_VELOCITY = -750.0
+const JUMP_VELOCITY = -375.0
 const hookScene=preload("res://Scenes/grapple.tscn")
 var hasjumped:=false
 var started_timer:=false
@@ -54,9 +54,9 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.frame=1
 		$coyoteTimer.stop()
 		if not hasjumped and (hook ==null or not hook.latched):$JumpTimer.start()
-		var delta_y:=JUMP_VELOCITY*((0.5 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump") else 0.0) + (delta*5))
-		#print("jump velocity:",delta_y)
-		velocity.y+= delta_y
+		if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump"):
+			velocity.y=min(JUMP_VELOCITY,velocity.y)
+		velocity.y+=JUMP_VELOCITY*delta*10
 		#print(velocity.y)
 		if(hook!=null and hook.latched and position.distance_squared_to(hook.position)<2500):
 			hook.retract() 
@@ -75,7 +75,7 @@ func _physics_process(delta: float) -> void:
 						closestHook=area
 						closestHookDistance=distance
 				var target=Autoload.closestPointOnRec(Rect2(closestHook.global_position- (closestHook.get_node("CollisionShape2D").shape.size/2),closestHook.get_node("CollisionShape2D").shape.size),position)
-				print(target)
+				#print(tar get)
 				hook=hookScene.instantiate()
 				hook.position=position
 				hook.rotation=(target-position).angle()+(PI/2) 
