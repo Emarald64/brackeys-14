@@ -4,11 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://biidv0qmsryj5" path="res://Assets/art/white.png" id="2_2ayim"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ayim"]
+size = Vector2(11.1521, 11.1521)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kyeu7"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(10, 10, 1)
+emission_box_extents = Vector3(5, 5, 1)
 gravity = Vector3(0, 0, 0)
 scale_min = 4.0
 scale_max = 8.0
