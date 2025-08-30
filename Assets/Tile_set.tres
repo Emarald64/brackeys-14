@@ -830,6 +830,18 @@ texture_region_size = Vector2i(64, 64)
 10:15/0 = 0
 10:16/0 = 0
 15:11/0 = 0
+15:14/0 = 0
+15:14/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 0, -32, 0)
+15:14/0/physics_layer_2/polygon_0/one_way = true
+15:15/0 = 0
+15:15/0/physics_layer_2/polygon_0/points = PackedVector2Array(32, -32, 32, 0, -32, 0, -32, -32)
+15:15/0/physics_layer_2/polygon_0/one_way = true
+11:14/0 = 0
+11:14/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+11:14/0/physics_layer_2/polygon_0/one_way = true
+11:13/0 = 0
+11:13/0/physics_layer_2/polygon_0/points = PackedVector2Array(-32, 0, 32, 0, 32, 32, -32, 32)
+11:13/0/physics_layer_2/polygon_0/one_way = true
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4i8q6"]
 scenes/1/scene = ExtResource("2_rq55a")

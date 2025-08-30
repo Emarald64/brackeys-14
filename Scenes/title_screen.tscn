@@ -7,9 +7,13 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3fck"]
 bg_color = Color(0.23, 0.23, 0.23, 0.913725)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twnyg"]
-bg_color = Color(0.16, 0.16, 0.16, 0.788235)
+bg_color = Color(0.160784, 0.160784, 0.160784, 0.886275)
 corner_radius_top_right = 20
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55kwv"]
@@ -157,8 +161,8 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -435.0
-offset_right = 264.0
+offset_top = -395.0
+offset_right = 379.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_twnyg")
 
@@ -183,6 +187,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 14.0
 offset_top = 48.0
+offset_right = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/v_separation = 15
@@ -194,12 +199,12 @@ texture = SubResource("AtlasTexture_55kwv")
 stretch_mode = 2
 
 [node name="Movement" type="RichTextLabel" parent="Controls/FlowContainer"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 theme = ExtResource("2_s4lrb")
 bbcode_enabled = true
 text = "[indent][b]Movement[/b]
-Up and down can be used to fall slower or faster"
+Up and down can be used to fall slower or faster."
 fit_content = true
 scroll_active = false
 
@@ -209,11 +214,12 @@ texture = SubResource("AtlasTexture_12m1t")
 stretch_mode = 3
 
 [node name="Jump" type="RichTextLabel" parent="Controls/FlowContainer"]
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 theme = ExtResource("2_s4lrb")
 bbcode_enabled = true
-text = "	[b]Jump[/b]"
+text = "[indent][b]Jump[/b]
+You can also jump while you are near your grappling hook"
 fit_content = true
 
 [node name="Arr i\'m a pirate" type="TextureRect" parent="Controls/FlowContainer"]
@@ -224,10 +230,11 @@ stretch_mode = 2
 [node name="Respawn" type="RichTextLabel" parent="Controls/FlowContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("2_s4lrb")
 bbcode_enabled = true
 text = "[indent][b]Respawn[/b]
-Teleport to your last checkpoint"
+Teleport to your last checkpoint."
 fit_content = true
 
 [node name="Shift" type="TextureRect" parent="Controls/FlowContainer"]
@@ -238,10 +245,12 @@ stretch_mode = 2
 [node name="Grapple" type="RichTextLabel" parent="Controls/FlowContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("2_s4lrb")
 bbcode_enabled = true
 text = "[indent][b]Grapple[/b]
-After getting the grappling hook
+After getting the grappling hook.
+Press again to release.
 "
 fit_content = true
 

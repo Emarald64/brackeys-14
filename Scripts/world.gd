@@ -1,5 +1,11 @@
 extends Node2D
 
+var startTimeMS:int
+
+func _ready():
+	startTimeMS=Time.get_ticks_msec()
+	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug-teleport"):
