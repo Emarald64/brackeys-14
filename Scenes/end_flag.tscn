@@ -30,7 +30,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1txk"]
-size = Vector2(81, 256)
+size = Vector2(40.5, 129)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bjvum"]
 particle_flag_disable_z = true
@@ -54,10 +54,10 @@ particle_flag_disable_z = true
 emission_shape_scale = Vector3(10, 10, 10)
 angle_min = -180.0
 angle_max = 180.0
-direction = Vector3(0.5, -1, 0)
+direction = Vector3(0.383, -0.924, 0)
 spread = 15.0
-initial_velocity_min = 600.0
-initial_velocity_max = 800.0
+initial_velocity_min = 400.0
+initial_velocity_max = 600.0
 angular_velocity_min = -180.0
 angular_velocity_max = 180.0
 gravity = Vector3(0, 980, 0)
@@ -85,21 +85,6 @@ color = Color(0.81738, 0.00183975, 0.968225, 1)
 hue_variation_min = -2.23517e-08
 hue_variation_max = 1.0
 
-[sub_resource type="Animation" id="Animation_nli1k"]
-resource_name = "new_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles2D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_c8qsm"]
 length = 0.001
 tracks/0/type = "value"
@@ -115,6 +100,21 @@ tracks/0/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_nli1k"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b1x5n"]
 _data = {
 &"RESET": SubResource("Animation_c8qsm"),
@@ -127,12 +127,11 @@ collision_mask = 2
 script = ExtResource("1_bjvum")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_0mgfw")
 animation = &"Down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-88.5, 0)
+position = Vector2(-44.25, 0.5)
 shape = SubResource("RectangleShape2D_w1txk")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -146,14 +145,12 @@ visibility_rect = Rect2(-800, -350, 1600, 800)
 process_material = SubResource("ParticleProcessMaterial_bjvum")
 
 [node name="GPUParticles2D-left" type="GPUParticles2D" parent="."]
-position = Vector2(-495, 0)
-emitting = false
-amount = 60
+position = Vector2(-300, 64)
+amount = 30
 texture = ExtResource("5_b1x5n")
 lifetime = 1.5
-one_shot = true
-explosiveness = 1.0
-visibility_rect = Rect2(0, -300, 800, 800)
+explosiveness = 0.95
+visibility_rect = Rect2(0, -300, 600, 800)
 process_material = SubResource("ParticleProcessMaterial_gg8oc")
 
 [node name="GPUParticles2D-right" type="GPUParticles2D" parent="."]
