@@ -760,16 +760,3 @@ rotation = 1.57079
 [node name="Spring6" parent="." instance=ExtResource("15_kn0ld")]
 position = Vector2(6688, -4000)
 rotation = 3.14159
-
-[connection signal="body_entered" from="TileMapLayer/@Area2D@29723" to="TileMapLayer/@Area2D@29723" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@29724" to="TileMapLayer/@Area2D@29724" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@29730" to="TileMapLayer/@Area2D@29730" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@29741" to="TileMapLayer/@Area2D@29741" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@29742" to="TileMapLayer/@Area2D@29742" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@29746" to="TileMapLayer/@Area2D@29746" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@29747" to="TileMapLayer/@Area2D@29747" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@29748" to="TileMapLayer/@Area2D@29748" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@29753" to="TileMapLayer/@Area2D@29753" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@29754" to="TileMapLayer/@Area2D@29754" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@29756" to="TileMapLayer/@Area2D@29756" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_entered"]

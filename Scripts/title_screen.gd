@@ -10,11 +10,11 @@ func _on_screen_shake_toggled(toggled_on: bool) -> void:
 
 
 func pressedStart() -> void:
-	sceneToTransition=load("res://Scenes/world.tscn")
+	ResourceLoader.load_threaded_request("res://Scenes/world.tscn")
 	$AnimationPlayer.play("Fade Out")
 
 func changeScene() -> void:
-	get_tree().change_scene_to_packed(sceneToTransition)
+	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get("res://Scenes/world.tscn"))
 
 func _on_mute_toggled(toggled_on: bool) -> void:
 	Autoload.mute=toggled_on
