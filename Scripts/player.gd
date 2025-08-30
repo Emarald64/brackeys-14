@@ -42,6 +42,7 @@ func _physics_process(delta: float) -> void:
 		hasjumped=false
 		started_timer=false
 		$coyoteTimer.stop()
+		
 	if not animating and$Collect.has_overlapping_areas() and $Collect.get_overlapping_areas()[0].has_meta("animation"):
 		$"Interact Prompt".show()
 		if Input.is_action_just_pressed("jump"):
@@ -91,21 +92,24 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	if not is_on_floor():velocity.y+=Input.get_axis("move_up", "move_down")*200*delta
-	var direction := Input.get_axis("move_left", "move_right")
-	velocity.x= lerp(velocity.x,direction*SPEED,(15 if is_on_floor() else 5) * delta)
+	if not animating:
+		if not is_on_floor():velocity.y+=Input.get_axis("move_up", "move_down")*200*delta
+		var direction := Input.get_axis("move_left", "move_right")
+		velocity.x= lerp(velocity.x,direction*SPEED,(15 if is_on_floor() else 5) * delta)
+	else:velocity.x=0
 
 	move_and_slide()
 	springFrame=false
 
 func respawn():
-	deathCount+=1
-	print('respawn')
-	velocity=Vector2.ZERO
-	if hook !=null:hook.queue_free()
-	position=curCP.position
-	Autoload.camera.add_trauma(0.3)
-	updateLight()
+	if not animating:
+		deathCount+=1
+		print('respawn')
+		velocity=Vector2.ZERO
+		if hook !=null:hook.queue_free()
+		position=curCP.position
+		Autoload.camera.add_trauma(0.3)
+		updateLight()
 
 func pickup(area: Area2D) -> void:
 	match area.get_meta("pickupType",''):

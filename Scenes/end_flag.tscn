@@ -72,10 +72,10 @@ particle_flag_disable_z = true
 emission_shape_scale = Vector3(10, 10, 10)
 angle_min = -180.0
 angle_max = 180.0
-direction = Vector3(-0.5, -1, 0)
+direction = Vector3(-0.383, -0.924, 0)
 spread = 15.0
-initial_velocity_min = 600.0
-initial_velocity_max = 800.0
+initial_velocity_min = 400.0
+initial_velocity_max = 600.0
 angular_velocity_min = -180.0
 angular_velocity_max = 180.0
 gravity = Vector3(0, 980, 0)
@@ -146,21 +146,21 @@ process_material = SubResource("ParticleProcessMaterial_bjvum")
 
 [node name="GPUParticles2D-left" type="GPUParticles2D" parent="."]
 position = Vector2(-300, 64)
+emitting = false
 amount = 30
 texture = ExtResource("5_b1x5n")
-lifetime = 1.5
+lifetime = 3.0
 explosiveness = 0.95
 visibility_rect = Rect2(0, -300, 600, 800)
 process_material = SubResource("ParticleProcessMaterial_gg8oc")
 
 [node name="GPUParticles2D-right" type="GPUParticles2D" parent="."]
-position = Vector2(500, 0)
+position = Vector2(301, 64)
 emitting = false
-amount = 60
+amount = 30
 texture = ExtResource("5_b1x5n")
-lifetime = 1.5
-one_shot = true
-explosiveness = 1.0
+lifetime = 3.0
+explosiveness = 0.95
 visibility_rect = Rect2(-800, -300, 800, 800)
 process_material = SubResource("ParticleProcessMaterial_f4tq0")
 

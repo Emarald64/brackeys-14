@@ -10,4 +10,7 @@ func hit(body: Node2D) -> void:
 		$"GPUParticles2D-left".emitting=true
 		$"GPUParticles2D-right".emitting=true
 		$AnimationPlayer.play("new_animation")
+		
+		body.animating=true
+		body.get_node("../AnimationPlayer").play("End")
 	
