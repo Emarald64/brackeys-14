@@ -131,6 +131,9 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 pivot_offset = Vector2(57, 34.875)
+focus_neighbor_right = NodePath("../Options/ScreenShake")
+focus_next = NodePath("../Options/ScreenShake")
+focus_previous = NodePath("../Options/Mute")
 theme = ExtResource("2_s4lrb")
 text = "Play"
 
@@ -278,15 +281,24 @@ offset_right = -29.0
 offset_bottom = -34.0
 grow_horizontal = 0
 grow_vertical = 0
+alignment = 2
 
 [node name="ScreenShake" type="CheckButton" parent="Options"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../Play Button")
+focus_neighbor_bottom = NodePath("../Mute")
+focus_next = NodePath("../Mute")
+focus_previous = NodePath("../../Play Button")
 theme = ExtResource("2_s4lrb")
 text = "Disable Screen Shake"
 autowrap_mode = 2
 
 [node name="Mute" type="CheckButton" parent="Options"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../Play Button")
+focus_neighbor_top = NodePath("../ScreenShake")
+focus_next = NodePath("../../Play Button")
+focus_previous = NodePath("../ScreenShake")
 theme = ExtResource("2_s4lrb")
 text = "Mute"
 

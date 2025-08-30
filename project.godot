@@ -94,6 +94,7 @@ debug-2={
 2d_physics/layer_5="death"
 2d_physics/layer_6="platform"
 2d_physics/layer_7="dark"
+2d_physics/layer_8="end"
 
 [physics]
 

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://87oda23khtke"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://87oda23khtke"]
 
 [ext_resource type="FontFile" uid="uid://dlb4s7yxtxo1h" path="res://Assets/Rubik/Rubik-VariableFont_wght.ttf" id="1_10rey"]
 [ext_resource type="Texture2D" uid="uid://dcwqsvns2ukta" path="res://Assets/art/UI/button_square_depth_line.png" id="1_wl1kw"]
@@ -10,8 +10,6 @@ variation_opentype = {
 2003265652: 400
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sa3yf"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e54dn"]
 texture = ExtResource("1_wl1kw")
 texture_margin_left = 9.0
@@ -22,11 +20,10 @@ texture_margin_bottom = 13.0
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3yumr"]
 content_margin_top = 4.0
 texture = ExtResource("2_lu33j")
-texture_margin_left = 8.0
-texture_margin_top = 12.0
-texture_margin_right = 8.0
-texture_margin_bottom = 8.0
-region_rect = Rect2(0, 0, 64, 64)
+texture_margin_left = 9.0
+texture_margin_top = 13.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
 
 [sub_resource type="FontVariation" id="FontVariation_10rey"]
 base_font = ExtResource("1_10rey")
@@ -55,7 +52,6 @@ Button/colors/font_outline_color = Color(1, 1, 1, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/font_sizes/font_size = 32
 Button/fonts/font = SubResource("FontVariation_7yyeo")
-Button/styles/focus = SubResource("StyleBoxEmpty_sa3yf")
 Button/styles/hover = SubResource("StyleBoxTexture_e54dn")
 Button/styles/hover_pressed = SubResource("StyleBoxTexture_3yumr")
 Button/styles/normal = SubResource("StyleBoxTexture_e54dn")
