@@ -7,7 +7,7 @@ const hookScene=preload("res://Scenes/grapple.tscn")
 var hasjumped:=false
 var started_timer:=false
 var hook:Area2D
-var deathCount=0
+var deathCount:=0
 var springFrame:=false
 @export var animating:=false
 @export var canGrapple:=false

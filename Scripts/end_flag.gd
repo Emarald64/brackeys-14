@@ -12,5 +12,6 @@ func hit(body: Node2D) -> void:
 		$AnimationPlayer.play("new_animation")
 		
 		body.animating=true
+		body.get_node("../End Overlay/End Screen/Death Count").text="Deaths: "+str(body.deathCount)
 		body.get_node("../AnimationPlayer").play("End")
 	
