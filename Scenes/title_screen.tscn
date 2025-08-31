@@ -154,7 +154,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_p3fck")
 layout_mode = 2
 theme = ExtResource("2_s4lrb")
 theme_override_font_sizes/font_size = 80
-text = "Grappling To It"
+text = "The Climb"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -263,6 +263,7 @@ libraries = {
 }
 
 [node name="Version" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0

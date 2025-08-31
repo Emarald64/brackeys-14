@@ -13,9 +13,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug-2"):
-		add_trauma(0.5)
-		print("debug trauma")
+	#if Input.is_action_just_pressed("debug-2"):
+		#add_trauma(0.5)
+		#print("debug trauma")
 	if trauma and Autoload.cameraShake:
 		if not trauma_locked:trauma = max(trauma - decay * delta, 0.0)
 		var amount = pow(trauma, trauma_power)
