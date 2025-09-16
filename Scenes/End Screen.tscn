@@ -52,7 +52,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("FontVariation_f5r8q")
 theme_override_font_sizes/font_size = 40
-text = "Thank you for playing"
+text = "Thank you for playing!
+Press F1 to go to the warp zone."
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

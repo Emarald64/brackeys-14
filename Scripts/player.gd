@@ -9,6 +9,8 @@ var started_timer:=false
 var hook:Area2D
 var deathCount:=0
 var springFrame:=false
+var jumpTime:=0.0
+const maxJumpTime=0.15
 @export var animating:=false
 @export var canGrapple:=false
 
@@ -25,6 +27,10 @@ func _process(_delta: float) -> void:
 		$"Line2D".show()
 	else:
 		$"Line2D".hide()
+	
+	if Input.is_key_pressed(KEY_F1):
+		position=Vector2(-25000,0)
+		updateLight()
  
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset") and not animating:
@@ -32,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Add the gravity.
 	if not is_on_floor():
-		if $AnimatedSprite2D.frame==0 or not $JumpTimer.is_stopped():$AnimatedSprite2D.frame=2
+		if $AnimatedSprite2D.frame==0 or jumpTime<maxJumpTime:$AnimatedSprite2D.frame=2
 		velocity += get_gravity() * delta * (0.8 if hook != null and hook.latched else 1.0)
 		if not started_timer and not springFrame:
 			$coyoteTimer.start()
@@ -50,16 +56,15 @@ func _physics_process(delta: float) -> void:
 	else:$"Interact Prompt".hide()
 			
 	# Handle jump.
-	if not animating and ((Input.is_action_pressed("jump") and not $JumpTimer.is_stopped()) or (Input.is_action_just_pressed("jump") and (not $coyoteTimer.is_stopped() or is_on_floor() or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<2500)))):
+	if not animating and ((Input.is_action_pressed("jump") and jumpTime<0.1) or (Input.is_action_just_pressed("jump") and (not $coyoteTimer.is_stopped() or is_on_floor() or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<2500)))):
 		if not hasjumped:
 			if not Autoload.mute:$"Jump Sound".play()
 			$AnimatedSprite2D.frame=1
 		$coyoteTimer.stop()
-		if not hasjumped and (hook ==null or not hook.latched):$JumpTimer.start()
-		var delta_y:=JUMP_VELOCITY*((1.0 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump") else 0.0) + (delta*10))
-		#print("jump velocity:",delta_y,"frame:",Engine.get_physics_frames(),"onfloor:",is_on_floor())
-		velocity.y+= delta_y
-		#print(velocity.y)
+		if not hasjumped and (hook ==null or not hook.latched):jumpTime=0.0
+		velocity.y+=JUMP_VELOCITY*((1.0 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump") else 0.0) + (delta*10) if jumpTime+delta<maxJumpTime else (maxJumpTime-jumpTime)*10)
+		jumpTime+=delta
+
 		if(hook!=null and hook.latched and position.distance_squared_to(hook.position)<2500):
 			hook.retract() 
 		hasjumped=true
