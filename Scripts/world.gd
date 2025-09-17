@@ -22,13 +22,16 @@ func _process(_delta: float) -> void:
 
 func loadSave():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
-	$Player.position.x=save_file.get_float()
-	$Player.position.y=save_file.get_float()
-	$Player.deathCount=save_file.get_32()
-	var byte=save_file.get_8()
-	$Player.canGrapple=bool(byte)
+	$Player.position.x=(save_file.get_16())*32
+	$Player.position.y=(2-save_file.get_16())*32
+	var x=save_file.get_32()
+	$Player.deathCount=x&0x4fffffff
+	print($Player.deathCount)
 	$Player.updateLight()
-	$AnimationPlayer.play("Show tutorial sign 2")
+	if bool(x>>31):
+		print("has hook")
+		$Player.canGrapple=true
+		$AnimationPlayer.play("Show tutorial sign 2")
 
 		#min color 0.392
 		# diff color 0.608

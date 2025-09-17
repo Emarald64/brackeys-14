@@ -10,6 +10,7 @@ func _on_body_entered(body):
 	if(body.curCP!=self):
 		body.curCP = self
 		#active = false
+		print(position)
 		get_tree().call_group("Checkpoints","dropFlag")
 		$AnimatedSprite2D.play("Up")
 		$GPUParticles2D.emitting=true
@@ -25,8 +26,7 @@ func dropFlag():
 func save(player:Node2D):
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	if save_file==null:print("cant open save")
-	save_file.store_float(player.position.x)
-	save_file.store_float(player.position.y)
-	save_file.store_32(player.deathCount)
-	save_file.store_8(int(player.canGrapple))
+	save_file.store_16(int(position.x/32))
+	save_file.store_16(2-int(position.y/32))
+	save_file.store_32(player.deathCount|int(player.canGrapple)<<31)
 	save_file.close()
