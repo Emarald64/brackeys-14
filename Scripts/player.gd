@@ -10,6 +10,7 @@ var hook:Area2D
 var deathCount:=0
 var springFrame:=false
 var jumpTime:=0.0
+var usedWarpZone:=false
 const maxJumpTime=0.15
 @export var animating:=false
 @export var canGrapple:=false
@@ -30,6 +31,7 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_key_pressed(KEY_F1):
 		position=Vector2(-25000,0)
+		usedWarpZone=true
 		updateLight()
  
 func _physics_process(delta: float) -> void:
