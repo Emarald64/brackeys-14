@@ -64,7 +64,8 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.frame=1
 		$coyoteTimer.stop()
 		if not hasjumped:jumpTime=0.0
-		velocity.y+=JUMP_VELOCITY*((1.0 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump") else 0.0) + (delta*10) if jumpTime+delta<maxJumpTime else (maxJumpTime-jumpTime)*10)
+		var jump=JUMP_VELOCITY*((1.0 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump") else 0.0) + (delta*10) if jumpTime+delta<maxJumpTime else (maxJumpTime-jumpTime)*10)
+		velocity.y=max(velocity.y+jump,-700)
 		jumpTime+=delta
 
 		if(hook!=null and hook.latched and position.distance_squared_to(hook.position)<2500):

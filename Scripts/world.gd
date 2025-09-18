@@ -1,10 +1,12 @@
 extends Node2D
 
 var startTimeMS:int
+var secondQuest:=false
 
 func _ready():
 	startTimeMS=Time.get_ticks_msec()
 	if Autoload.loadSave:loadSave()
+	elif Input.is_action_pressed("grapple"):startSecondQuest()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,14 +24,17 @@ func _process(_delta: float) -> void:
 
 func loadSave():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
-	$Player.position.x=(save_file.get_16())*32
+	$Player.position.x=(save_file.get_16()-16)*32
 	$Player.position.y=(2-save_file.get_16())*32
+	
+	print($Player.position)
 	
 	$Player.deathCount=save_file.get_16()
 	startTimeMS-=save_file.get_32()*1000
 	
 	var x = save_file.get_8()
 	$Player.usedWarpZone=bool(x&0x02)
+	if(x&0x04):startSecondQuest()
 	if bool(x&0x02):print('used warp')
 	if x&0x01:
 		print("has hook")
@@ -42,3 +47,9 @@ func loadSave():
 		#min pos -2018
 		#max pos -2530
 		# diff pos -512
+
+func startSecondQuest():
+	secondQuest=true;
+	$TileMapLayer.enabled=false
+	$"TileMapLayer-2nd quest".enabled=true
+	

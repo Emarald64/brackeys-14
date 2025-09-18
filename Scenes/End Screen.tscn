@@ -44,15 +44,36 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -192.0
+offset_left = -293.0
 offset_top = -88.0
-offset_right = 212.0
+offset_right = 122.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("FontVariation_f5r8q")
 theme_override_font_sizes/font_size = 40
-text = "Thank you for playing!
+text = "Thank you for playing!"
+
+[node name="Normal End" type="Label" parent="Label2"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = SubResource("FontVariation_f5r8q")
+theme_override_font_sizes/font_size = 40
+text = "
+Hold Shift when starting a
+new game for the second quest"
+
+[node name="Second End" type="Label" parent="Label2"]
+layout_mode = 0
+offset_left = -150.0
+offset_right = 702.0
+offset_bottom = 150.0
+theme_override_fonts/font = SubResource("FontVariation_f5r8q")
+theme_override_font_sizes/font_size = 40
+text = "
+Good Job, you compleated the second quest!
 Press F1 to go to the warp zone."
 
 [node name="Button" type="Button" parent="."]
