@@ -11,7 +11,7 @@ var deathCount:=0
 var springFrame:=false
 var jumpTime:=0.0
 var usedWarpZone:=false
-const maxJumpTime=0.15
+const maxJumpTime=0.125
 @export var animating:=false
 @export var canGrapple:=false
 
@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
 			if not Autoload.mute:$"Jump Sound".play()
 			$AnimatedSprite2D.frame=1
 		$coyoteTimer.stop()
-		if not hasjumped and (hook ==null or not hook.latched):jumpTime=0.0
+		if not hasjumped:jumpTime=0.0
 		velocity.y+=JUMP_VELOCITY*((1.0 if not hasjumped or (hook!=null and hook.latched and position.distance_squared_to(hook.position)<=1250) and Input.is_action_just_pressed("jump") else 0.0) + (delta*10) if jumpTime+delta<maxJumpTime else (maxJumpTime-jumpTime)*10)
 		jumpTime+=delta
 

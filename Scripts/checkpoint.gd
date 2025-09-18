@@ -28,5 +28,10 @@ func save(player:Node2D):
 	if save_file==null:print("cant open save")
 	save_file.store_16(int(position.x/32))
 	save_file.store_16(2-int(position.y/32))
-	save_file.store_32(player.deathCount|int(player.canGrapple)<<31)
+	save_file.store_16(player.deathCount)
+	save_file.store_32((Time.get_ticks_msec()-player.get_parent().startTimeMS)/1000)
+	save_file.store_8(
+		int(player.canGrapple) | \
+		int(player.usedWarpZone)<<1
+	)
 	save_file.close()

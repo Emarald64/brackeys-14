@@ -24,15 +24,19 @@ func loadSave():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
 	$Player.position.x=(save_file.get_16())*32
 	$Player.position.y=(2-save_file.get_16())*32
-	var x=save_file.get_32()
-	$Player.deathCount=x&0x4fffffff
-	print($Player.deathCount)
-	$Player.updateLight()
-	if bool(x>>31):
+	
+	$Player.deathCount=save_file.get_16()
+	startTimeMS-=save_file.get_32()*1000
+	
+	var x = save_file.get_8()
+	$Player.usedWarpZone=bool(x&0x02)
+	if bool(x&0x02):print('used warp')
+	if x&0x01:
 		print("has hook")
 		$Player.canGrapple=true
 		$AnimationPlayer.play("Show tutorial sign 2")
 
+	$Player.updateLight()
 		#min color 0.392
 		# diff color 0.608
 		#min pos -2018
