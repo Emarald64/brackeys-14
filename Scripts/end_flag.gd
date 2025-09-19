@@ -30,9 +30,8 @@ func hit(body: Node2D) -> void:
 		"Time: "+formatTime(Time.get_ticks_msec()-get_parent().startTimeMS)+'\n'+\
 		"Deaths: "+str(body.deathCount)
 		
-		if(get_parent().secondQuest):
-			body.get_node("../End Overlay/End Screen/Label2/Normal End").visible=false
-			body.get_node("../End Overlay/End Screen/Label2/Second End").visible=true
+		body.get_node("../End Overlay/End Screen/Label2/Normal End").visible=not get_parent().secondQuest
+		body.get_node("../End Overlay/End Screen/Label2/Second End").visible=get_parent().secondQuest
 		
 		body.get_node("../AnimationPlayer").play("End")
 	
