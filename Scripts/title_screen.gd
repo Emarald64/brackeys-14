@@ -23,7 +23,3 @@ func changeScene() -> void:
 
 func _on_mute_toggled(toggled_on: bool) -> void:
 	Autoload.mute=toggled_on
-
-
-func pressedStart(extra_arg_0: bool) -> void:
-	pass # Replace with function body.
